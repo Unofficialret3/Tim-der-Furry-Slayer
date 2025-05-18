@@ -11,7 +11,7 @@ public class Bullet {
 
     public Bullet (int x,int y){
         
-        this.x = x;
+        this.x = x + GamePanel.player1.getWidth()/2 ; // damit es aus der mitte des players kommt
         this.y = y;
         
 

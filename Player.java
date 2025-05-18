@@ -6,8 +6,8 @@ import java.awt.Color;
 public class Player {
 
 
-    private int x, y, width = 100, height = 30;
-    private int speed = 15;
+    protected int x, y, width = 100, height = 30;
+    protected int speed = 15;
 
     public Player(int startX, int startY) {
         this.x = startX;
@@ -39,5 +39,8 @@ public class Player {
         g.fillRect(x, y, width, height);
     }
 
-    
+    //get mothoden
+    public int getWidth() {
+        return width;
+        }
 }

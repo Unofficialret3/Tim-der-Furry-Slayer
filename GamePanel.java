@@ -15,7 +15,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 
     // spieler createn
-    private Player player = new Player(375, 500); // Mitte unten
+    protected  static Player player1 = new Player((SpaceInvaders.sizeX/2)- 50, SpaceInvaders.sizeY-150); // Mitte unten
 
 
 
@@ -27,12 +27,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         
         addKeyListener(this);
 
+        //listew für bullets initaliesieren
         bullets = new ArrayList<>();
 
-
-
-
-
+        //tbh kein plan was der macht
         timer = new Timer(16, this); // ~60 FPS
         timer.start();
     }
@@ -48,7 +46,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
             }
         
         // spieler zeichnen
-        player.draw(g);
+        player1.draw(g);
 
         
         // TODO:  und Objekte zeichnen
@@ -88,9 +86,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     @Override public void keyPressed(KeyEvent e) {
             int key = e.getKeyCode();
             //links recht logik
-            if (key == KeyEvent.VK_LEFT|| key == KeyEvent.VK_A ) player.moveLeft();
-            if (key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D) player.moveRight();
-            if (key == KeyEvent.VK_SPACE ) player.shoot();
+            if (key == KeyEvent.VK_LEFT|| key == KeyEvent.VK_A ) player1.moveLeft();
+            if (key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D) player1.moveRight();
+            if (key == KeyEvent.VK_SPACE ) player1.shoot();
     }
     @Override public void keyReleased(KeyEvent e) {}
     @Override public void keyTyped(KeyEvent e) {}
