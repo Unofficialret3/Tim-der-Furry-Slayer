@@ -11,6 +11,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
     //liste für die schüsse
     protected static ArrayList<Bullet> bullets;
+
+    private boolean isLeftPressed = false;
+    private boolean isRightPressed = false;
+    private boolean isSpacePressed = false;
     
 
 
@@ -57,6 +61,22 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         // TODO: Spiel-Logik updaten
 
 
+
+        //bewegungen
+         // Bewegung basierend auf gedrückter Taste
+            if (isLeftPressed) {
+                player1.moveLeft();
+            }
+            if (isRightPressed) {
+                player1.moveRight();
+            }
+
+            // Schießen 
+            if (isSpacePressed) {
+                player1.shoot();
+            }
+
+
         // schüsse updaten
         if (!bullets.isEmpty()) {
             // iteraor  nicht schleife damit  sachen  sicher gelöscht werden
@@ -85,11 +105,18 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     // Tasteneingaben
     @Override public void keyPressed(KeyEvent e) {
             int key = e.getKeyCode();
-            //links recht logik
-            if (key == KeyEvent.VK_LEFT|| key == KeyEvent.VK_A ) player1.moveLeft();
-            if (key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D) player1.moveRight();
-            if (key == KeyEvent.VK_SPACE ) player1.shoot();
+            //key logik
+            if (key == KeyEvent.VK_LEFT|| key == KeyEvent.VK_A ) isLeftPressed= true;   // mit booleans damit parralele eingaben möglich sind
+            if (key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D) isRightPressed = true;
+            if (key == KeyEvent.VK_SPACE ) isSpacePressed= true ;
     }
-    @Override public void keyReleased(KeyEvent e) {}
+    @Override public void keyReleased(KeyEvent e) {
+        int key = e.getKeyCode();
+
+        if (key == KeyEvent.VK_LEFT|| key == KeyEvent.VK_A ) isLeftPressed= false;   
+            if (key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D) isRightPressed = false;
+            if (key == KeyEvent.VK_SPACE ) isSpacePressed= false ;
+
+    }
     @Override public void keyTyped(KeyEvent e) {}
 }
