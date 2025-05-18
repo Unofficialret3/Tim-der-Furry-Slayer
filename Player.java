@@ -22,9 +22,12 @@ public class Player {
         x += speed;
     }
 
-    public void shoot(){
-        //TODO: create a new bullet object and add it to the game
-        
+
+    public void shoot() {
+        // 
+        Bullet bullet = new Bullet(x,y);
+        GamePanel.bullets.add(bullet);
+
     }
 
 
@@ -35,4 +38,6 @@ public class Player {
         g.setColor(Color.GREEN);
         g.fillRect(x, y, width, height);
     }
+
+    
 }
