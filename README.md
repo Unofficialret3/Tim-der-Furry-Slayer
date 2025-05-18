@@ -3,6 +3,7 @@ Jo sehr starkes spiel
 
 ToDO :
    
--  - Gegners
-    - kollision logik mit jenen
+-  - Gegners 
+    - gegner schießen, kollsions logik für spieler -> sterben game over
     - Gegner bewegen
+

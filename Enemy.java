@@ -24,9 +24,9 @@ public class Enemy {
 
 
     public void shoot() {
-        // 
-        Bullet bullet = new Bullet(x,y);
-       // GamePanel.bullets.add(bullet); // wahrscheinlich eigene liste für enemy bullets
+        //TODO: für gegener machen und dann auch kollison mit spieler 
+       // Bullet bullet = new Bullet(x,y);
+       //GamePanel.bullets.add(bullet); // wahrscheinlich eigene liste für enemy bullets
 
     }
 
