@@ -4,7 +4,7 @@ import java.awt.Graphics;
 public class Bullet {
 
     private int width = 5;
-    private int height = 10;
+    private int height = 20;
     private int x, y;
     //private int speedY;
     //private int damage;

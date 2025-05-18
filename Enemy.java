@@ -38,7 +38,7 @@ public class Enemy {
     int bulletW = b.getWidth();
     int bulletH = b.getHeight();
 
-    // wenn eine kannte sich iwi berührt bzw überschneidet dann true
+    // wenn eine kannte sich iwi berührt bzw überschneidet dann true ( AABB-Kollision (Axis-Aligned Bounding Box))
     return bulletX < x + width && bulletX + bulletW > x && bulletY < y + height && bulletY + bulletH > y;
 
     }
