@@ -11,6 +11,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
     //liste für die schüsse
     protected static ArrayList<Bullet> bullets;
+    protected ArrayList<Enemy> enemies;
 
     private boolean isLeftPressed = false;
     private boolean isRightPressed = false;
@@ -21,18 +22,24 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     // spieler createn
     protected  static Player player1 = new Player((SpaceInvaders.sizeX/2)- 50, SpaceInvaders.sizeY-150); // Mitte unten
 
+    // test enemey
+    protected Enemy enemy1 = new Enemy((SpaceInvaders.sizeX/2)- 50, SpaceInvaders.sizeY-650 ); // mitte oben
+
 
 
     public GamePanel() {
         
-        
-        
         setFocusable(true);
-        
         addKeyListener(this);
 
         //listew für bullets initaliesieren
         bullets = new ArrayList<>();
+        // liste für enemys
+        enemies = new ArrayList<>();
+
+        enemies.add(enemy1);
+
+
 
         //tbh kein plan was der macht
         timer = new Timer(16, this); // ~60 FPS
@@ -49,9 +56,14 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
             bullet.draw(g);
             }
         
+
+    
         // spieler zeichnen
         player1.draw(g);
-
+        // enemies malen
+        for(Enemy enemy : enemies){
+            enemy.draw(g);
+        }
         
         // TODO:  und Objekte zeichnen
     }
@@ -63,7 +75,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 
         //bewegungen
-         // Bewegung basierend auf gedrückter Taste
             if (isLeftPressed) {
                 player1.moveLeft();
             }
@@ -80,18 +91,29 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         // schüsse updaten
         if (!bullets.isEmpty()) {
             // iteraor  nicht schleife damit  sachen  sicher gelöscht werden
-            Iterator<Bullet> it = bullets.iterator();
-            while (it.hasNext()) {
-                Bullet b = it.next();
-
+            Iterator<Bullet> itB = bullets.iterator();
+            while (itB.hasNext()) {
+                Bullet b = itB.next();
                 // Position aktualisieren
                 b.setY(b.getY() - 10); // 10 nach oben
-
                 // Wenn Bullet aus dem Panel raus ist dann löschem
-                if (b.getY() <= 0) {
-                    it.remove(); // korrekt: entfernt über den Iterator
+                if (b.getY() <= 0) { 
+                    itB.remove(); // korrekt: entfernt über den Iterator
                 }
-    }
+
+                // iterator durch jden enemy
+                Iterator<Enemy> itE = enemies.iterator();
+                while(itE.hasNext()){
+                    Enemy enemy = itE.next();
+                    if(enemy.isCollidingWithBullet(b)){
+                        itB.remove();
+                        itE.remove();
+                    }
+
+                }
+                
+
+            }
 }
 
 
