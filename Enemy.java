@@ -6,7 +6,7 @@ import java.awt.Color;
 public class Enemy {
 
 
-    private int x, y, width = 50, height = 50;
+    private int x, y, width = 50, height = 50, type ;
     private int speed = 1;
 
     long oldMillis= 0;
@@ -15,6 +15,8 @@ public class Enemy {
     public Enemy(int startX, int startY) {
         this.x = startX;
         this.y = startY;
+        //später brauchbar
+        this.type= 1;
     }
 
     public void moveLeft(int s) {
@@ -79,6 +81,7 @@ public class Enemy {
     }
 
     //get mothoden
+    public int getType() { return type; }
     public int getX() { return x; }
     public int getY() { return y; }
     public int getWidth() { return width; }

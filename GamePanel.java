@@ -43,7 +43,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 
 
-        //tbh kein plan was der macht
+        //tick system für action listner
         timer = new Timer(16, this); // ~60 FPS
         timer.start();
     }
@@ -79,7 +79,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
             }
 
 
-            enemy.draw(g);
+        enemy.draw(g);
+        drawScore(g);
         }
         
         // TODO:  und Objekte zeichnen
@@ -145,8 +146,16 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
                     Enemy enemy = itE.next();
 
-                    if (enemy.getY() >= SpaceInvaders.sizeY) {
+                    if (enemy.getY() >= SpaceInvaders.sizeY-25) {
+                   
                         itE.remove();
+
+
+                        // fail screen
+                        DeathPanel panel = new DeathPanel(score);
+                        SpaceInvaders.DeatPanelActivate(panel);
+                        panel.setBackground(Color.BLACK);
+
                     }
 
                 }
@@ -161,11 +170,15 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
                     while (itE.hasNext()) {
 
                         Enemy enemy = itE.next();
-
+                            //bullet und enemy coliding
                         if (enemy.isCollidingWithBullet(b)) {
+
+                            updateScore(enemy.getType());
                             itB.remove();
                             itE.remove();
+
                             sounds.playEnemyDeath();
+                            
                             break; 
                             }
                     }
@@ -258,11 +271,16 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 
     //Score
-    public void scoreUpdate(int s){
-        score += s;
+    public void updateScore(int s){
+        score += s*10;
         
     }
-    
+    private void drawScore(Graphics g) {
+    g.setColor(Color.WHITE); // Farbe z. B. weiß
+    g.setFont(new Font("SansSerif", Font.BOLD, 20)); // Schriftart
+    g.drawString("Score: " + score, 10, 20); // Links oben bei (10, 20)
+}
+
 
 
 
