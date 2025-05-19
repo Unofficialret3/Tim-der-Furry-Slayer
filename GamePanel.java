@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
     private Timer timer;
-    
+    private long score;
 
     //liste für die schüsse
     protected static ArrayList<Bullet> bullets;
@@ -180,6 +180,28 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         */
         repaint();
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     //spawn patterns
     protected int[][] spawnPattern1 = {
      { 1,0,0}, // linke spalte
@@ -235,7 +257,12 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 
 
-
+    //Score
+    public void scoreUpdate(int s){
+        score += s;
+        
+    }
+    
 
 
 

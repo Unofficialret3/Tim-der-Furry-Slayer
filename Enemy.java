@@ -78,21 +78,6 @@ public class Enemy {
         g.fillRect(x, y, width, height);
     }
 
-
-
-    
-                                
-                                        
-
-
-
-
-
-
-
-
-
-
     //get mothoden
     public int getX() { return x; }
     public int getY() { return y; }
