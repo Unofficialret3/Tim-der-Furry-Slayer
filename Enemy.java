@@ -7,7 +7,7 @@ public class Enemy {
 
 
     private int x, y, width = 100, height = 30;
-    private int speed = 15;
+    private int speed = 1;
 
     public Enemy(int startX, int startY) {
         this.x = startX;
@@ -20,6 +20,12 @@ public class Enemy {
 
     public void moveRight() {
         x += speed;
+    }
+    public void moveDown() {
+        y += speed;
+    }
+    public void moveUp() {
+        y -= speed;
     }
 
 

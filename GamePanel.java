@@ -60,8 +60,21 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     
         // spieler zeichnen
         player1.draw(g);
+
+       
         // enemies malen
         for(Enemy enemy : enemies){
+
+
+            if(enemy.getY()<= SpaceInvaders.sizeY){
+                //move runter y achse
+                enemy.moveDown();
+            }
+            else{
+                
+            }
+
+
             enemy.draw(g);
         }
         
@@ -88,36 +101,56 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
             }
 
 
-        // schüsse updaten
-        if (!bullets.isEmpty()) {
-            // iteraor  nicht schleife damit  sachen  sicher gelöscht werden
-            Iterator<Bullet> itB = bullets.iterator();
-            while (itB.hasNext()) {
-                Bullet b = itB.next();
-                // Position aktualisieren
-                b.setY(b.getY() - 10); // 10 nach oben
-                // Wenn Bullet aus dem Panel raus ist dann löschem
-                if (b.getY() <= 0) { 
-                    itB.remove(); // korrekt: entfernt über den Iterator
+            // schüsse updaten
+               Iterator<Bullet> itB = bullets.iterator();
+
+                while (itB.hasNext()) {
+
+                    Bullet b = itB.next();
+                    b.setY(b.getY() - 10);
+
+                    if (b.getY() <= 0) {
+                        itB.remove();
+                    }
                 }
 
-                // iterator durch jden enemy
+                // Enemies löschen wenn außerhalb
                 Iterator<Enemy> itE = enemies.iterator();
-                while(itE.hasNext()){
+                while (itE.hasNext()) {
+
                     Enemy enemy = itE.next();
-                    if(enemy.isCollidingWithBullet(b)){
-                        itB.remove();
+
+                    if (enemy.getY() >= SpaceInvaders.sizeY) {
                         itE.remove();
                     }
 
                 }
-                
 
-            }
-}
+                // Kollisionen prüfen 
+                itB = bullets.iterator();// nochmal weil der von oben schon leer ist
+                while (itB.hasNext()) {
 
+                    Bullet b = itB.next();
+                    itE = enemies.iterator();
 
+                    while (itE.hasNext()) {
 
+                        Enemy enemy = itE.next();
+
+                        if (enemy.isCollidingWithBullet(b)) {
+                            itB.remove();
+                            itE.remove();
+                            break; 
+                            }
+                    }
+                }
+        // tests
+    try{
+    System.out.println(enemies.get(0).getY());
+    }
+    catch (Exception e2){
+        System.out.println("keine enemies");
+        }
         repaint();
     }
 
