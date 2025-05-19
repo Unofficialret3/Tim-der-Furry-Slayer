@@ -65,10 +65,7 @@ public class Enemy {
 
 
 
-    protected int[][] spawnWay1 = {
-    {1, 1, 1},
-    {0, 1, 0}
-};
+    
                                 
                                         
 

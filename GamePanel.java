@@ -164,11 +164,15 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         repaint();
     }
 
-
+    protected int[][] spawnPattern1 = {
+    {1, 1, 1},
+    {0, 1, 0}
+};
 
     //methoden
     private void spawnEnemies() {
-
+        
+        
     }
 
 
