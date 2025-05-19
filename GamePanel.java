@@ -169,8 +169,19 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     }
 
     protected int[][] spawnPattern1 = {
-   { 0,0,1 }, // i ->  
-    { 1, 1,1 } // runter j
+     { 1,0,0}, // linke spalte
+     { 1, 1,1 } , // mitte
+     { 1,0,0 }// rechte spalte
+    };
+     protected int[][] spawnPattern2 = {
+     { 0,1,0}, // linke spalte
+     { 1, 0,1 } , // mitte
+     { 0,1,0 }// rechte spalte
+    };
+     protected int[][] spawnPattern3 = {
+     { 1,1,1}, // linke spalte
+     { 1, 1,1 } , // mitte
+     { 1,1,1 }// rechte spalte
     };
 
     //methodend
@@ -182,19 +193,20 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
         // enemys spawnen
         for(int i= 0;i<=pattern.length-1;i++){
-            for(int j = 0;j<=pattern.length;j++){
+            for(int j = 0;j<=pattern.length-1;j++){
 
                 if(pattern[i][j] == 1){
                     if(i==mid){
-                        Enemy enemy = new Enemy(SpaceInvaders.sizeX/2, SpaceInvaders.sizeY-750 +j *100);
+                        Enemy enemy = new Enemy(SpaceInvaders.sizeX/2-25, SpaceInvaders.sizeY-750 +j *100);
                         enemies.add(enemy);
                     }
                     else if(i<mid){
-                        Enemy enemy = new Enemy((SpaceInvaders.sizeX/2)-(i*100), SpaceInvaders.sizeY-750+j*100);
-                        enemies.add(enemy);
+                        
+                         Enemy enemy = new Enemy((SpaceInvaders.sizeX/2-25)-((1+i)*100), SpaceInvaders.sizeY-750+j*100);
+                            enemies.add(enemy);
                     }
                     else if(i>mid){
-                        Enemy enemy = new Enemy((SpaceInvaders.sizeX/2)+(i*100),SpaceInvaders.sizeY-750+j*100);
+                        Enemy enemy = new Enemy((SpaceInvaders.sizeX/2-25)+((i-1)*100),SpaceInvaders.sizeY-750+j*100);
                         enemies.add(enemy);
                     }
                     else{
