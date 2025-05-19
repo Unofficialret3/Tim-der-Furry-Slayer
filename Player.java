@@ -1,9 +1,12 @@
 //imports
+import javax.imageio.ImageIO;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.awt.Graphics;
 import java.awt.Color;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.Objects;
 
 
 public class Player {
