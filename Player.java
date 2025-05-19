@@ -1,10 +1,13 @@
 //imports
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.awt.Graphics;
 import java.awt.Color;
+import java.io.IOException;
 
 
 public class Player {
-
+    SoundPlayer player = new SoundPlayer();
 
     protected int x, y, width = 100, height = 30;
     protected int speed = 15;
@@ -23,15 +26,12 @@ public class Player {
     }
 
 
-    public void shoot() {
+    public void shoot(){
         // 
         Bullet bullet = new Bullet(x,y);
         GamePanel.bullets.add(bullet);
-
+        player.playLaser();
     }
-
-
-
 
     //spieler malen
     public void draw(Graphics g) {

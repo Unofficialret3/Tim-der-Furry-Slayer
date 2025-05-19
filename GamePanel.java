@@ -1,4 +1,7 @@
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
+import java.io.IOException;
 import java.util.Iterator;
 
 import java.awt.*;
@@ -17,7 +20,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     private boolean isLeftPressed = false;
     private boolean isRightPressed = false;
     private boolean isSpacePressed = false;
-    
+    SoundPlayer sounds = new SoundPlayer();
 
 
     // spieler createn
@@ -29,7 +32,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 
     public GamePanel() {
-        
+
         setFocusable(true);
         addKeyListener(this);
 
@@ -149,6 +152,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
                         if (enemy.isCollidingWithBullet(b)) {
                             itB.remove();
                             itE.remove();
+                            sounds.playEnemyDeath();
                             break; 
                             }
                     }
