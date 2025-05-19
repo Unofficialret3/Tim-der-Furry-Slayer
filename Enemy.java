@@ -6,7 +6,7 @@ import java.awt.Color;
 public class Enemy {
 
 
-    private int x, y, width = 100, height = 30;
+    private int x, y, width = 50, height = 50;
     private int speed = 1;
 
     public Enemy(int startX, int startY) {
@@ -14,12 +14,12 @@ public class Enemy {
         this.y = startY;
     }
 
-    public void moveLeft() {
-        x -= speed;
+    public void moveLeft(int s) {
+        x -= s;
     }
 
-    public void moveRight() {
-        x += speed;
+    public void moveRight(int s) {
+        x += s;
     }
     public void moveDown() {
         y += speed;
@@ -27,7 +27,14 @@ public class Enemy {
     public void moveUp() {
         y -= speed;
     }
-
+    public void moveRandomLR(){
+        if(Math.random()<0.5){
+            moveLeft(5);
+        }
+        else{
+            moveRight(5);
+            }
+    }
 
     public void shoot() {
         //TODO: für gegener machen und dann auch kollison mit spieler 
@@ -50,15 +57,29 @@ public class Enemy {
     }
 
 
-
-
-
-
-    //spieler malen
+    //enemy  malen
     public void draw(Graphics g) {
         g.setColor(Color.PINK);
         g.fillRect(x, y, width, height);
     }
+
+
+
+    protected int[][] spawnWay1 = {
+    {1, 1, 1},
+    {0, 1, 0}
+};
+                                
+                                        
+
+
+
+
+
+
+
+
+
 
     //get mothoden
     public int getX() { return x; }

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
     private Timer timer;
+    long oldMillis= 0;
 
     //liste für die schüsse
     protected static ArrayList<Bullet> bullets;
@@ -23,7 +24,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     protected  static Player player1 = new Player((SpaceInvaders.sizeX/2)- 50, SpaceInvaders.sizeY-150); // Mitte unten
 
     // test enemey
-    protected Enemy enemy1 = new Enemy((SpaceInvaders.sizeX/2)- 50, SpaceInvaders.sizeY-650 ); // mitte oben
+    protected Enemy enemy1 = new Enemy((SpaceInvaders.sizeX/2)- 50, SpaceInvaders.sizeY-750 ); // mitte oben
 
 
 
@@ -69,6 +70,14 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
             if(enemy.getY()<= SpaceInvaders.sizeY){
                 //move runter y achse
                 enemy.moveDown();
+
+                long newMilis = System.currentTimeMillis();
+                
+
+                if((newMilis-oldMillis)>500){
+                enemy.moveRandomLR();
+                oldMillis = newMilis;
+                }
             }
             else{
                 
@@ -145,14 +154,27 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
                     }
                 }
         // tests
-    try{
+   /*  try{
     System.out.println(enemies.get(0).getY());
     }
     catch (Exception e2){
         System.out.println("keine enemies");
         }
+        */
         repaint();
     }
+
+
+
+    //methoden
+    private void spawnEnemies() {
+
+    }
+
+
+
+
+
 
 
 
