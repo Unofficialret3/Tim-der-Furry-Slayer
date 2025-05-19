@@ -1,20 +1,28 @@
-//imports
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
+// Imports
 import java.awt.Graphics;
 import java.awt.Color;
+import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
 import java.io.IOException;
-
 
 public class Player {
     SoundPlayer player = new SoundPlayer();
 
-    protected int x, y, width = 100, height = 30;
+    protected int x, y, width = 100, height = 100;
     protected int speed = 15;
+    private BufferedImage image;  // Bild für den Spieler
 
     public Player(int startX, int startY) {
         this.x = startX;
         this.y = startY;
+
+        try {
+            // Bild aus Ressourcen laden
+            image = ImageIO.read(getClass().getResource("images/Player.png")); // <-- Stelle sicher, dass das Bild im Klassenpfad liegt
+        } catch (IOException | IllegalArgumentException e) {
+            System.err.println("Konnte Bild nicht laden: " + e.getMessage());
+            image = null;
+        }
     }
 
     public void moveLeft() {
@@ -25,22 +33,25 @@ public class Player {
         x += speed;
     }
 
-
-    public void shoot(){
-        // 
-        Bullet bullet = new Bullet(x,y);
+    public void shoot() {
+        Bullet bullet = new Bullet(x, y);
         GamePanel.bullets.add(bullet);
         player.playLaser();
     }
 
-    //spieler malen
+    // Spieler malen
     public void draw(Graphics g) {
-        g.setColor(Color.GREEN);
-        g.fillRect(x, y, width, height);
+        if (image != null) {
+            g.drawImage(image, x, y, width, height, null);
+        } else {
+            // Fallback: grünes Rechteck
+            g.setColor(Color.GREEN);
+            g.fillRect(x, y, width, height);
+        }
     }
 
-    //get mothoden
+    // Getter
     public int getWidth() {
         return width;
-        }
+    }
 }
