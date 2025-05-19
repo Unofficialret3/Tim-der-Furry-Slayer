@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import java.io.IOException;
+import java.util.Objects;
 
 public class Player {
     SoundPlayer player = new SoundPlayer();
@@ -18,7 +19,7 @@ public class Player {
 
         try {
             // Bild aus Ressourcen laden
-            image = ImageIO.read(getClass().getResource("images/Player.png")); // <-- Stelle sicher, dass das Bild im Klassenpfad liegt
+            image = ImageIO.read(Objects.requireNonNull(getClass().getResource("images/Player.png"))); // <-- Stelle sicher, dass das Bild im Klassenpfad liegt
         } catch (IOException | IllegalArgumentException e) {
             System.err.println("Konnte Bild nicht laden: " + e.getMessage());
             image = null;
