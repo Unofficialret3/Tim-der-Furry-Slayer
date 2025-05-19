@@ -9,6 +9,9 @@ public class Enemy {
     private int x, y, width = 50, height = 50;
     private int speed = 1;
 
+    long oldMillis= 0;
+
+
     public Enemy(int startX, int startY) {
         this.x = startX;
         this.y = startY;
@@ -28,12 +31,24 @@ public class Enemy {
         y -= speed;
     }
     public void moveRandomLR(){
-        if(Math.random()<0.5){
-            moveLeft(5);
-        }
-        else{
-            moveRight(5);
-            }
+
+        long newMilis = System.currentTimeMillis();
+                
+                //wenn nicht bewegt seit x milis
+                if((newMilis-oldMillis)>250){
+                    
+                    if(Math.random()<0.5){
+                            moveLeft(5);
+                        }
+                        else{
+                            moveRight(5);
+                        }
+
+
+                oldMillis = newMilis;
+                }
+
+        
     }
 
     public void shoot() {

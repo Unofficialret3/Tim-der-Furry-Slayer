@@ -1,8 +1,7 @@
 
 import javax.swing.*;
-
 import java.util.Iterator;
-
+import java.util.Random;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
@@ -10,7 +9,7 @@ import java.util.ArrayList;
 public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
     private Timer timer;
-    long oldMillis= 0;
+    
 
     //liste für die schüsse
     protected static ArrayList<Bullet> bullets;
@@ -39,7 +38,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         bullets = new ArrayList<>();
         // liste für enemys
         enemies = new ArrayList<>();
-
+        // spawn enemies
         spawnEnemies(spawnPattern1);
 
 
@@ -72,14 +71,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
             if(enemy.getY()<= SpaceInvaders.sizeY){
                 //move runter y achse
                 enemy.moveDown();
-
-                long newMilis = System.currentTimeMillis();
-                
-
-                if((newMilis-oldMillis)>500){
                 enemy.moveRandomLR();
-                oldMillis = newMilis;
-                }
+                
             }
             else{
                 
@@ -96,7 +89,28 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     public void actionPerformed(ActionEvent e) {
         // TODO: Spiel-Logik updaten
 
+        //enemy spawn logik
+        if(enemies.isEmpty()){
 
+            bullets.clear();
+
+            Random rand = new Random();
+            int choice = rand.nextInt(3); // ergibt 0 /1/2
+
+            switch (choice) {
+                case 0:
+                    spawnEnemies(spawnPattern1);
+                    break;
+                case 1:
+                    spawnEnemies(spawnPattern2);
+                    break;
+                case 2:
+                    spawnEnemies(spawnPattern3);
+                    break;
+                default:
+                break;
+            }
+        }
 
         //bewegungen
             if (isLeftPressed) {
@@ -166,7 +180,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         */
         repaint();
     }
-
+    //spawn patterns
     protected int[][] spawnPattern1 = {
      { 1,0,0}, // linke spalte
      { 1, 1,1 } , // mitte
