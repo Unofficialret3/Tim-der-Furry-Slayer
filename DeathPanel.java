@@ -80,12 +80,12 @@ public class DeathPanel extends JPanel implements ActionListener, KeyListener {
 
 
      @Override public void keyPressed(KeyEvent e) {
-            int key = e.getKeyCode();
+           ;
      }
     @Override public void keyReleased(KeyEvent e) {
-        int key = e.getKeyCode();
+        
     }
     @Override public void keyTyped(KeyEvent e) {
-        int key = e.getKeyCode();
+        
     }
 }
