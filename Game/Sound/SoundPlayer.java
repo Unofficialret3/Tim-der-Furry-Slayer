@@ -1,3 +1,5 @@
+package Game.Sound;
+
 import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
@@ -28,7 +30,7 @@ public class SoundPlayer {
 
     public void playEnemyDeath(){
         try {
-            loadSound("sounds/animedeath.wav");
+            loadSound("ressources/sounds/animedeath.wav");
         } catch (IOException | UnsupportedAudioFileException | LineUnavailableException e) {
             throw new RuntimeException(e);
         }

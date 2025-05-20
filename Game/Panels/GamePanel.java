@@ -1,3 +1,9 @@
+package Game.Panels;
+
+import Game.Objects.Bullet;
+import Game.Objects.Enemy;
+import Game.Objects.Player;
+import Game.Sound.SoundPlayer;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
@@ -15,7 +21,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     private long score;
 
     //liste für die schüsse
-    protected static ArrayList<Bullet> bullets;
+    public static ArrayList<Bullet> bullets;
     protected ArrayList<Enemy> enemies;
 
     private boolean isLeftPressed = false;
@@ -31,7 +37,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     protected  static Player player1 = new Player((SpaceInvaders.sizeX/2)- 50, SpaceInvaders.sizeY-150); // Mitte unten
 
     // test enemey
-    //protected Enemy enemy1 = new Enemy((SpaceInvaders.sizeX/2)- 50, SpaceInvaders.sizeY-750 ); // mitte oben
+    //protected Game.Objects.Enemy enemy1 = new Game.Objects.Enemy((Game.Panels.SpaceInvaders.sizeX/2)- 50, Game.Panels.SpaceInvaders.sizeY-750 ); // mitte oben
 
 
 
@@ -74,8 +80,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
                 enemy.moveDown();
                 enemy.moveRandomLR();
             }
-            else{
-            }
+
         enemy.draw(g);
         drawScore(g);
         }
@@ -89,7 +94,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         if (isESCPressed && !paused) {
             paused = true;
             try {
-                player1.player.loadSound("sounds/pauseSound.wav");
+                player1.player.loadSound("ressources/sounds/pauseSound.wav");
             } catch (IOException | UnsupportedAudioFileException | LineUnavailableException ex) {
                 throw new RuntimeException(ex);
             }
@@ -206,17 +211,17 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     }
 
     //spawn patterns
-    private int[][] spawnPattern1 = {
+    private final int[][] spawnPattern1 = {
      { 1,0,0}, // linke spalte
      { 1, 1,1 } , // mitte
      { 1,0,0 }// rechte spalte
     };
-     private int[][] spawnPattern2 = {
+     private final int[][] spawnPattern2 = {
      { 0,1,0}, // linke spalte
      { 1, 0,1 } , // mitte
      { 0,1,0 }// rechte spalte
     };
-     private int[][] spawnPattern3 = {
+     private final int[][] spawnPattern3 = {
      { 1,1,1}, // linke spalte
      { 1, 1,1 } , // mitte
      { 1,1,1 }// rechte spalte
@@ -349,7 +354,7 @@ protected int[][] spawnPatternDNA = {
                             enemies.add(enemy);
                     }
                     else if(i>mid){
-                        Enemy enemy = new Enemy((SpaceInvaders.sizeX/2-12)+((i-1)*100),SpaceInvaders.sizeY-950+j*50,type);
+                        Enemy enemy = new Enemy((SpaceInvaders.sizeX/2-12)+((i-1)*100), SpaceInvaders.sizeY-950+j*50,type);
                         enemies.add(enemy);
                     }
                     else{
@@ -367,7 +372,7 @@ protected int[][] spawnPatternDNA = {
 
     //Score
     public void updateScore(int score){
-        this.score += score*10;
+        this.score += score* 10L;
         
     }
     private void drawScore(Graphics g) {

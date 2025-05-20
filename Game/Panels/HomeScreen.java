@@ -1,3 +1,5 @@
+package Game.Panels;
+
 import java.awt.*;
 
 import javax.swing.ImageIcon;
@@ -5,9 +7,9 @@ import javax.swing.JPanel;
 //diese klasse ist nicht mkir ich verstehe go nix
 public class HomeScreen extends JPanel {
 
-    private Image background;
-    private CustomButton startButton;
-    private CustomButton optionsButton;
+    private final Image background;
+    private final CustomButton startButton;
+    private final CustomButton optionsButton;
 
      public HomeScreen() {
         setFocusable(true);
@@ -17,15 +19,15 @@ public class HomeScreen extends JPanel {
         // Button initialisieren
         startButton = new CustomButton("Spiel starten");
         optionsButton = new CustomButton("Optionen");
-        background = new ImageIcon("textures/TitleScreen.png").getImage();
+        background = new ImageIcon("ressources/textures/TitleScreen.png").getImage();
 
         // Größe setzen und zentrieren
         int btnWidth = 300;
         int btnHeight = 60;
         int centerX = (SpaceInvaders.sizeX - btnWidth) / 2;
 
-        startButton.setBounds(centerX, SpaceInvaders.sizeY-SpaceInvaders.sizeY/4, btnWidth, btnHeight);
-        optionsButton.setBounds(centerX, SpaceInvaders.sizeY-SpaceInvaders.sizeY/4 + 80, btnWidth, btnHeight);
+        startButton.setBounds(centerX, SpaceInvaders.sizeY- SpaceInvaders.sizeY/4, btnWidth, btnHeight);
+        optionsButton.setBounds(centerX, SpaceInvaders.sizeY- SpaceInvaders.sizeY/4 + 80, btnWidth, btnHeight);
 
         // Aktionen bei Klick
         startButton.setOnClick(() -> {

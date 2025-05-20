@@ -1,3 +1,7 @@
+package Game.Panels;
+
+import Game.Objects.Player;
+
 import javax.swing.*;
 import java.awt.*;
 

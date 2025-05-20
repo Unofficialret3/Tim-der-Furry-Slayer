@@ -1,3 +1,7 @@
+package Game.Objects;
+
+import Game.Sound.SoundPlayer;
+
 import javax.imageio.ImageIO;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
@@ -6,8 +10,9 @@ import java.io.IOException;
 import java.util.Objects;
 import java.awt.Graphics;
 import java.awt.Color;
+import Game.Panels.GamePanel;
 
-//Weapon Types: 0 = Blaster, 1 = Grenade
+//Game.Objects.Weapon Types: 0 = Blaster, 1 = Grenade
 
 
 public class Weapon {

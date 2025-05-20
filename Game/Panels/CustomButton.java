@@ -1,10 +1,12 @@
+package Game.Panels;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
 
 class CustomButton extends JComponent {
-        private String label;
+        private final String label;
         private boolean hovered = false;
         private Runnable onClick = null;
 

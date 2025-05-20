@@ -1,3 +1,4 @@
+package Game.Panels;
 
 import java.awt.*;
 
@@ -17,8 +18,8 @@ public class SpaceInvaders {
         frame.setResizable(false);
         frame.setTitle("TIM DER FURRY SLAYER very HD 69FPS!!! EXTREME OPEN ALPHA V 4.20");
         //homescreen
-       //HomeScreenActivate();
-       GamePanelActivate();
+       HomeScreenActivate();
+       //GamePanelActivate();
     }
 
     protected static void HomeScreenActivate(){

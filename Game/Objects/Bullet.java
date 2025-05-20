@@ -1,3 +1,5 @@
+package Game.Objects;
+
 import javax.imageio.ImageIO;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -12,7 +14,7 @@ public class Bullet {
     private int x, y;
     private BufferedImage image;
     public int health;
-    int weaponType;
+    public int weaponType;
     public boolean changedX = false;
     public boolean changedY = false;
     public boolean hit = false;

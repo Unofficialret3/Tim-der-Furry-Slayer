@@ -1,3 +1,6 @@
+package Game.Shop;
+
+import Game.Objects.Weapon;
 
 public class WeaponItem {
     final String name;

@@ -1,4 +1,4 @@
-//imports
+package Game.Objects;//imports
 import javax.imageio.ImageIO;
 import java.awt.Graphics;
 import java.awt.Color;
@@ -26,9 +26,9 @@ public class Enemy {
         this.speed= this.getSpeed();
         try {
             if(type == 1){
-                image = ImageIO.read(Objects.requireNonNull(getClass().getResource("textures/Enemy.png")));
+                image = ImageIO.read(Objects.requireNonNull(getClass().getResource("/textures/Enemy.png")));
             } else if (type == 2){
-                image = ImageIO.read(Objects.requireNonNull(getClass().getResource("textures/Enemy2.png")));
+                image = ImageIO.read(Objects.requireNonNull(getClass().getResource("/textures/Enemy2.png")));
             }
         } catch (IOException | IllegalArgumentException e) {
             System.err.println("Konnte Bild nicht laden: " + e.getMessage());
@@ -74,8 +74,8 @@ public class Enemy {
 
     //public void shoot() {
         //TODO: für gegener machen und dann auch kollison mit spieler 
-       // Bullet bullet = new Bullet(x,y);
-       //GamePanel.bullets.add(bullet); // wahrscheinlich eigene liste für enemy bullets
+       // Game.Objects.Bullet bullet = new Game.Objects.Bullet(x,y);
+       //Game.Panels.GamePanel.bullets.add(bullet); // wahrscheinlich eigene liste für enemy bullets
 
     //}
 
