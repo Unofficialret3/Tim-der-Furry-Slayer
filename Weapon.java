@@ -1,4 +1,6 @@
 import javax.imageio.ImageIO;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -11,14 +13,18 @@ public class Weapon {
     int speed;
     int width;
     int height;
+    int xOffset;
+    int xBulletOffset;
 
     BufferedImage texture;
     String texturePath;
     String soundPath;
 
-    public Weapon (int width, int height, int damage, int range, int speed, String texturePath, String soundPath) {
+    public Weapon (int width, int height, int xOffset, int xBulltetOffset, int damage, int range, int speed, String texturePath, String soundPath) {
         this.width = width;
         this.height = height;
+        this.xOffset = xOffset;
+        this.xBulletOffset = xBulltetOffset;
         this.damage = damage;
         this.range = range;
         this.speed = speed;
@@ -35,7 +41,7 @@ public class Weapon {
 
     public void drawWeapon(Graphics g, int x, int y) {
         if (texture != null) {
-            g.drawImage(texture, x+70, y, width, height, null);
+            g.drawImage(texture, x+xOffset, y, width, height, null);
         } else {
             // Fallback: grünes Rechteck
             g.setColor(Color.PINK);
@@ -43,5 +49,18 @@ public class Weapon {
         }
     }
 
-
+    public void shootWeapon(int x, int y, SoundPlayer sounds) {
+        Bullet bullet = new Bullet(x+xBulletOffset, y);
+        GamePanel.bullets.add(bullet);
+        try {
+            sounds.loadSound(soundPath);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (UnsupportedAudioFileException e) {
+            throw new RuntimeException(e);
+        } catch (LineUnavailableException e) {
+            throw new RuntimeException(e);
+        }
+        sounds.play();
+    }
 }

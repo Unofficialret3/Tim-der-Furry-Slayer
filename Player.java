@@ -26,7 +26,7 @@ public class Player {
             System.err.println("Konnte Bild nicht laden: " + e.getMessage());
             image = null;
         }
-         weapon = new Weapon(50, 50, 10, 10, 10,"textures/Slingshot.png", "sounsd/throw.wav");
+         weapon = new Weapon(50, 50, 70, 85, 10, 10, 10,"textures/Slingshot.png", "sounds/throw.wav");
     }
 
     public void moveLeft() {
@@ -38,9 +38,7 @@ public class Player {
     }
 
     public void shoot() {
-        Bullet bullet = new Bullet(x, y);
-        GamePanel.bullets.add(bullet);
-        player.playThrow();
+        weapon.shootWeapon(x, y, player);
     }
 
     // Spieler malen

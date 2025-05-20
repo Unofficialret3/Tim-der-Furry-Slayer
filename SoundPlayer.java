@@ -43,19 +43,6 @@ public class SoundPlayer {
     }
 
 
-    public void playLaser(){
-        try {
-            loadSound("sounds/pew.wav");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (UnsupportedAudioFileException e) {
-            throw new RuntimeException(e);
-        } catch (LineUnavailableException e) {
-            throw new RuntimeException(e);
-        }
-        play();
-    }
-
     public void playEnemyDeath(){
         try {
             loadSound("sounds/animedeath.wav");
@@ -69,17 +56,5 @@ public class SoundPlayer {
         play();
     }
 
-    public void playThrow(){
-        try {
-            loadSound("sounds/throw.wav");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (UnsupportedAudioFileException e) {
-            throw new RuntimeException(e);
-        } catch (LineUnavailableException e) {
-            throw new RuntimeException(e);
-        }
-        play();
-    }
 
 }

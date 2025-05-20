@@ -15,7 +15,7 @@ public class Bullet {
     private BufferedImage image;
     public Bullet (int x,int y){
         
-        this.x = x + GamePanel.player1.getWidth()/2 ; // damit es aus der mitte des players kommt
+        this.x = x; // damit es aus der mitte des players kommt
         this.y = y;
 
         try {
