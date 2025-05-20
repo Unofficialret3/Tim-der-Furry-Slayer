@@ -139,6 +139,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
                     Enemy enemy = itE.next();
                     if (enemy.getY() >= SpaceInvaders.sizeY-25) {
                         itE.remove();
+                        player1.player.stop();
                         // fail screen
                         DeathPanel panel = new DeathPanel(score);
                         SpaceInvaders.DeathPanelActivate(panel);

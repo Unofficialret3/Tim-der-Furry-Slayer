@@ -31,8 +31,6 @@ public class DeathPanel extends JPanel implements ActionListener, KeyListener {
     }
 
 
-
-
     private void drawScore(Graphics g) {
         String scoreText = "Score: " + score;
         Font font = new Font("SansSerif", Font.BOLD, 60); 

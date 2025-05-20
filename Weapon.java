@@ -23,13 +23,13 @@ public class Weapon {
     int weaponType;
     double fireRate;//in pro sekunde
     // variable nfür methoden
-    long[] timeOld = {0,0};// bei neuen waffen typen muss das erweitert werden
+    long timeOld = 0;
     BufferedImage texture;
     String texturePath;
     String soundPath;
     String bulletTexturePath;
 
-    public Weapon (int width, int height, int xOffset, int xBulltetOffset, int weaponType, int bulletWidth, int bulletHeight, int bulletHealth, int damage,double fireRate, String texturePath, String soundPath, String bulltetTexture) {
+    public Weapon (int width, int height, int xOffset, int xBulltetOffset, int weaponType, int bulletWidth, int bulletHeight, int bulletHealth, int damage, double fireRate, String texturePath, String soundPath, String bulltetTexture) {
         this.width = width;
         this.height = height;
         this.xOffset = xOffset;
@@ -64,7 +64,7 @@ public class Weapon {
 
     public void shootWeapon(int x, int y, SoundPlayer sounds) {
 
-        if(System.currentTimeMillis()>=timeOld[weaponType] + 1000/fireRate ){
+        if(System.currentTimeMillis()>=timeOld + 1000/fireRate ){
 
             Bullet bullet = new Bullet(x+xBulletOffset, y,bulletWidth, bulletHeight, bulletTexturePath, bulletHealth, weaponType);
             GamePanel.bullets.add(bullet);
@@ -74,7 +74,7 @@ public class Weapon {
                 throw new RuntimeException(e);
             }
             sounds.play();
-            timeOld[weaponType] = System.currentTimeMillis();
+            timeOld = System.currentTimeMillis();
         }
             
     }

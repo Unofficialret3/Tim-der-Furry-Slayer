@@ -35,5 +35,10 @@ public class SoundPlayer {
         play();
     }
 
+    public void stop() {
+        if (clip != null) {
+            clip.stop();
+        }
+    }
 
 }
