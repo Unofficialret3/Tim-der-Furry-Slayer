@@ -25,61 +25,15 @@ public class SoundPlayer {
         }
     }
 
-    public void stop() {
-        if (clip != null && clip.isRunning()) {
-            clip.stop();
-        }
-    }
-
-    public boolean isPlaying() {
-        return clip != null && clip.isRunning();
-    }
-
-    public void close() {
-        if (clip != null) {
-            clip.close();
-        }
-
-    }
-
-
-    public void playLaser(){
-        try {
-            loadSound("sounds/pew.wav");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (UnsupportedAudioFileException e) {
-            throw new RuntimeException(e);
-        } catch (LineUnavailableException e) {
-            throw new RuntimeException(e);
-        }
-        play();
-    }
 
     public void playEnemyDeath(){
         try {
             loadSound("sounds/animedeath.wav");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (UnsupportedAudioFileException e) {
-            throw new RuntimeException(e);
-        } catch (LineUnavailableException e) {
+        } catch (IOException | UnsupportedAudioFileException | LineUnavailableException e) {
             throw new RuntimeException(e);
         }
         play();
     }
 
-    public void playThrow(){
-        try {
-            loadSound("sounds/throw.wav");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (UnsupportedAudioFileException e) {
-            throw new RuntimeException(e);
-        } catch (LineUnavailableException e) {
-            throw new RuntimeException(e);
-        }
-        play();
-    }
 
 }

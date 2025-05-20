@@ -12,8 +12,9 @@ public class Player {
 
     protected int x, y, width = 100, height = 100;
     protected int speed = 15;
-    private BufferedImage image;  // Bild für den Spieler
-    Weapon weapon;
+
+    private BufferedImage texture;  // Bild für den Spieler
+    Weapon mainWeapon;
 
     public Player(int startX, int startY) {
         this.x = startX;
@@ -21,12 +22,12 @@ public class Player {
 
         try {
             // Bild aus Ressourcen laden
-            image = ImageIO.read(Objects.requireNonNull(getClass().getResource("textures/Player.png"))); // <-- Stelle sicher, dass das Bild im Klassenpfad liegt
+            texture = ImageIO.read(Objects.requireNonNull(getClass().getResource("textures/Player.png"))); // <-- Stelle sicher, dass das Bild im Klassenpfad liegt
         } catch (IOException | IllegalArgumentException e) {
             System.err.println("Konnte Bild nicht laden: " + e.getMessage());
-            image = null;
+            texture = null;
         }
-         weapon = new Weapon(50, 50, 10, 10, 10,"textures/Slingshot.png", "sounsd/throw.wav");
+         mainWeapon = new Weapon(50, 50, 70, 85, 10, 10, 10,"textures/Slingshot.png", "sounds/throw.wav");
     }
 
     public void moveLeft() {
@@ -37,26 +38,19 @@ public class Player {
         x += speed;
     }
 
-    public void shoot() {
-        Bullet bullet = new Bullet(x, y);
-        GamePanel.bullets.add(bullet);
-        player.playThrow();
+    public void shootMainWeapon() {
+        mainWeapon.shootWeapon(x, y, player);
     }
 
     // Spieler malen
     public void draw(Graphics g) {
-        if (image != null) {
-            g.drawImage(image, x, y, width, height, null);
-            weapon.drawWeapon(g, x, y);
+        if (texture != null) {
+            g.drawImage(texture, x, y, width, height, null);
+            mainWeapon.drawWeapon(g, x, y);
         } else {
             // Fallback: grünes Rechteck
             g.setColor(Color.GREEN);
             g.fillRect(x, y, width, height);
         }
-    }
-
-    // Getter
-    public int getWidth() {
-        return width;
     }
 }

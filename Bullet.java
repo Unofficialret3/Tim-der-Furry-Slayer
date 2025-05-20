@@ -7,15 +7,13 @@ import java.util.Objects;
 
 public class Bullet {
 
-    private int width = 20;
-    private int height = 20;
+    private final int width = 20;
+    private final int height = 20;
     private int x, y;
-    //private int speedY;
-    //private int damage;
     private BufferedImage image;
     public Bullet (int x,int y){
         
-        this.x = x + GamePanel.player1.getWidth()/2 ; // damit es aus der mitte des players kommt
+        this.x = x;
         this.y = y;
 
         try {
@@ -27,8 +25,6 @@ public class Bullet {
         }
     }
 
-
-    
     //malen
     public void draw(Graphics g) {
         if (image != null) {
@@ -39,14 +35,7 @@ public class Bullet {
         }
     }
 
-
-    //set und getter 
-   
-    
-    public void setX(int x) {
-        this.x = x;
-        }
-
+    //set und getter
     public void setY(int y) {
         this.y = y;
         }
