@@ -84,8 +84,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
         //enemy spawn logik
         if(enemies.isEmpty()){
-            //bullets.clear();
-            //spawnEnemies();
+            bullets.clear();
+            spawnEnemies();
         }
 
         //bewegungen
@@ -121,7 +121,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
                         }
                     } else {
-                        if((System.currentTimeMillis() - b.hitTime) >= 500){
+                        if((System.currentTimeMillis() - b.hitTime) >= 300){
                             itB.remove();
                         }
                     }

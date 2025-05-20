@@ -28,8 +28,8 @@ public class Player {
             System.err.println("Konnte Bild nicht laden: " + e.getMessage());
             texture = null;
         }
-         mainWeapon = new Weapon(50, 50, 70, 85,0, 10, 10, 1, 1, "textures/Slingshot.png", "sounds/throw.wav", "textures/StonePebble.png");
-         specialQWeapon = new Weapon(200, 200, 70, 0,1, 200, 200, 10, 10,"textures/Slingshot.png", "sounds/throw.wav", "textures/StonePebble.png");
+         mainWeapon = new Weapon(50, 50, 70, 85,0, 10, 10, 1, 1, 8,"textures/Slingshot.png", "sounds/throw.wav", "textures/StonePebble.png");
+         specialQWeapon = new Weapon(200, 200, 70, 0,1, 200, 200, 10, 10,0.5,"textures/Slingshot.png", "sounds/throw.wav", "textures/StonePebble.png");
     }
 
     public void moveLeft() {
