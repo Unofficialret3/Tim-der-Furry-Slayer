@@ -15,6 +15,8 @@ public class Player {
 
     private BufferedImage texture;  // Bild für den Spieler
     Weapon mainWeapon;
+    Weapon specialQ;
+
 
     public Player(int startX, int startY) {
         this.x = startX;
@@ -40,6 +42,10 @@ public class Player {
 
     public void shootMainWeapon() {
         mainWeapon.shootWeapon(x, y, player);
+    }
+
+    public void shootSpecialQWeapon(){
+
     }
 
     // Spieler malen

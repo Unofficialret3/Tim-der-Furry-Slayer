@@ -19,9 +19,10 @@ public class SpaceInvaders {
         frame.setSize(sizeX, sizeY);
         frame.setResizable(false);
 
-        //homescreen HomeScreenActivate();
+        //homescreen
+        HomeScreenActivate();
         
-       GamePanelActivate();
+       //GamePanelActivate();
     }
 
     protected static void HomeScreenActivate(){
@@ -44,8 +45,8 @@ public class SpaceInvaders {
         panel.setBackground(Color.BLACK);
         frame.add(panel);
         frame.revalidate();
+        frame.repaint();
         frame.setVisible(true);
-        
     }
 
     protected static void DeathPanelActivate(DeathPanel panel){

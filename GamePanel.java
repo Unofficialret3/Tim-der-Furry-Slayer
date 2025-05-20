@@ -30,7 +30,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 
     public GamePanel() {
-
+        requestFocusInWindow();
         setFocusable(true);
         addKeyListener(this);
 
@@ -46,6 +46,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         //tick system für action listner
         timer = new Timer(16, this); // ~60 FPS
         timer.start();
+
     }
 
     @Override
@@ -362,8 +363,8 @@ protected int[][] spawnPatternDNA = {
 
 
     //Score
-    public void updateScore(int s){
-        score += s*10;
+    public void updateScore(int score){
+        this.score += score*10;
         
     }
     private void drawScore(Graphics g) {
@@ -378,18 +379,18 @@ protected int[][] spawnPatternDNA = {
 
     // Tasteneingaben
     @Override public void keyPressed(KeyEvent e) {
-            int key = e.getKeyCode();
-            //key logik
-            if (key == KeyEvent.VK_LEFT|| key == KeyEvent.VK_A ) isLeftPressed= true;   // mit booleans damit parralele eingaben möglich sind
-            if (key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D) isRightPressed = true;
-            if (key == KeyEvent.VK_SPACE ) isSpacePressed= true ;
+        int key = e.getKeyCode();
+        //key logik
+        if (key == KeyEvent.VK_LEFT|| key == KeyEvent.VK_A ) isLeftPressed= true;   // mit booleans damit parralele eingaben möglich sind
+        if (key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D) isRightPressed = true;
+        if (key == KeyEvent.VK_SPACE ) isSpacePressed= true ;
     }
     @Override public void keyReleased(KeyEvent e) {
         int key = e.getKeyCode();
-
+        System.out.println("Basüdasd");
         if (key == KeyEvent.VK_LEFT|| key == KeyEvent.VK_A ) isLeftPressed= false;   
-            if (key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D) isRightPressed = false;
-            if (key == KeyEvent.VK_SPACE ) isSpacePressed= false ;
+        if (key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D) isRightPressed = false;
+        if (key == KeyEvent.VK_SPACE ) isSpacePressed= false ;
 
     }
     @Override public void keyTyped(KeyEvent e) {}
