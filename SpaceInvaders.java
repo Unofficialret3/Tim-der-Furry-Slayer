@@ -20,9 +20,9 @@ public class SpaceInvaders {
         frame.setResizable(false);
 
         //homescreen
-        HomeScreenActivate();
+        //HomeScreenActivate();
         
-       //GamePanelActivate();
+       GamePanelActivate();
     }
 
     protected static void HomeScreenActivate(){

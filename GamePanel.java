@@ -18,6 +18,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     private boolean isLeftPressed = false;
     private boolean isRightPressed = false;
     private boolean isSpacePressed = false;
+    private boolean isQPressed = false;
     SoundPlayer sounds = new SoundPlayer();
 
 
@@ -113,6 +114,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
                 player1.shootMainWeapon();
             }
 
+            if(isQPressed){
+                player1.shootSpecialQWeapon();
+            }
+
 
             // schüsse updaten
                Iterator<Bullet> itB = bullets.iterator();
@@ -161,7 +166,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
                         if (enemy.isCollidingWithBullet(b)) {
 
                             updateScore(enemy.getType());
-                            itB.remove();
+                            b.health--;
+                            if(b.health == 0){
+                                itB.remove();
+                            }
+
                             itE.remove();
 
                             sounds.playEnemyDeath();
@@ -373,10 +382,6 @@ protected int[][] spawnPatternDNA = {
     g.drawString("Score: " + score, 10, 20); // Links oben bei (10, 20)
 }
 
-
-
-
-
     // Tasteneingaben
     @Override public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
@@ -384,13 +389,14 @@ protected int[][] spawnPatternDNA = {
         if (key == KeyEvent.VK_LEFT|| key == KeyEvent.VK_A ) isLeftPressed= true;   // mit booleans damit parralele eingaben möglich sind
         if (key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D) isRightPressed = true;
         if (key == KeyEvent.VK_SPACE ) isSpacePressed= true ;
+        if (key == KeyEvent.VK_Q) isQPressed = true;
     }
     @Override public void keyReleased(KeyEvent e) {
         int key = e.getKeyCode();
-        System.out.println("Basüdasd");
         if (key == KeyEvent.VK_LEFT|| key == KeyEvent.VK_A ) isLeftPressed= false;   
         if (key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D) isRightPressed = false;
         if (key == KeyEvent.VK_SPACE ) isSpacePressed= false ;
+        if (key == KeyEvent.VK_Q) isQPressed= false;
 
     }
     @Override public void keyTyped(KeyEvent e) {}

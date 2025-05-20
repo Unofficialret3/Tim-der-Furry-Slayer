@@ -15,7 +15,7 @@ public class Player {
 
     private BufferedImage texture;  // Bild für den Spieler
     Weapon mainWeapon;
-    Weapon specialQ;
+    Weapon specialQWeapon;
 
 
     public Player(int startX, int startY) {
@@ -29,7 +29,8 @@ public class Player {
             System.err.println("Konnte Bild nicht laden: " + e.getMessage());
             texture = null;
         }
-         mainWeapon = new Weapon(50, 50, 70, 85, 10, 10, 10,"textures/Slingshot.png", "sounds/throw.wav");
+         mainWeapon = new Weapon(50, 50, 70, 85, 10, 10, 10, 1, "textures/Slingshot.png", "sounds/throw.wav", "textures/StonePebble.png");
+         specialQWeapon = new Weapon(200, 200, 70, 0, 200, 200, 10, 10,"textures/Slingshot.png", "sounds/throw.wav", "textures/StonePebble.png");
     }
 
     public void moveLeft() {
@@ -45,6 +46,7 @@ public class Player {
     }
 
     public void shootSpecialQWeapon(){
+        specialQWeapon.shootWeapon(x, y, player);
 
     }
 

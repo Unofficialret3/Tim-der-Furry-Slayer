@@ -7,18 +7,21 @@ import java.util.Objects;
 
 public class Bullet {
 
-    private final int width = 20;
-    private final int height = 20;
+    private final int width;
+    private final int height;
     private int x, y;
     private BufferedImage image;
-    public Bullet (int x,int y){
-        
+    public int health;
+    public Bullet (int x,int y, int width, int height, String texture, int health){
+        this.width = width;
+        this.height = height;
+        this.health = health;
         this.x = x;
         this.y = y;
 
         try {
             // Bild aus Ressourcen laden
-            image = ImageIO.read(Objects.requireNonNull(getClass().getResource("textures/StonePebble.png"))); // <-- Stelle sicher, dass das Bild im Klassenpfad liegt
+            image = ImageIO.read(Objects.requireNonNull(getClass().getResource(texture))); // <-- Stelle sicher, dass das Bild im Klassenpfad liegt
         } catch (IOException | IllegalArgumentException e) {
             System.err.println("Konnte Bild nicht laden: " + e.getMessage());
             image = null;
