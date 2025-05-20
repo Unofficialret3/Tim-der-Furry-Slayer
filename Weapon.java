@@ -76,11 +76,5 @@ public class Weapon {
             sounds.play();
             timeOld = System.currentTimeMillis();
         }
-            
     }
-
-
-
-
-
 }

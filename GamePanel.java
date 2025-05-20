@@ -1,5 +1,8 @@
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.Random;
 import java.awt.*;
@@ -19,6 +22,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     private boolean isRightPressed = false;
     private boolean isSpacePressed = false;
     private boolean isQPressed = false;
+    private boolean isESCPressed = false;
+    private boolean paused = false;
     SoundPlayer sounds = new SoundPlayer();
 
 
@@ -81,7 +86,16 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO: Spiel-Logik updaten
-
+        if (isESCPressed && !paused) {
+            paused = true;
+            try {
+                player1.player.loadSound("sounds/pauseSound.wav");
+            } catch (IOException | UnsupportedAudioFileException | LineUnavailableException ex) {
+                throw new RuntimeException(ex);
+            }
+            player1.player.play();
+            SpaceInvaders.PausePanelActivate();
+        }
         //enemy spawn logik
         if(enemies.isEmpty()){
             bullets.clear();
@@ -370,6 +384,7 @@ protected int[][] spawnPatternDNA = {
         if (key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D) isRightPressed = true;
         if (key == KeyEvent.VK_SPACE ) isSpacePressed= true ;
         if (key == KeyEvent.VK_Q) isQPressed = true;
+        if (key == KeyEvent.VK_ESCAPE) isESCPressed = true;
     }
     @Override public void keyReleased(KeyEvent e) {
         int key = e.getKeyCode();
@@ -377,7 +392,9 @@ protected int[][] spawnPatternDNA = {
         if (key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D) isRightPressed = false;
         if (key == KeyEvent.VK_SPACE ) isSpacePressed= false ;
         if (key == KeyEvent.VK_Q) isQPressed= false;
+        if (key == KeyEvent.VK_ESCAPE) isESCPressed = false;
 
     }
-    @Override public void keyTyped(KeyEvent e) {}
+    @Override public void keyTyped(KeyEvent e) {
+    }
 }

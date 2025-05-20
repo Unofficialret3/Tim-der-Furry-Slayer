@@ -1,5 +1,5 @@
 
-import java.awt.Color;
+import java.awt.*;
 
 import javax.swing.*;
 
@@ -47,7 +47,15 @@ public class SpaceInvaders {
         frame.getContentPane().removeAll(); 
         frame.add(panel);
         frame.revalidate();
-        frame.repaint();;
+        frame.repaint();
+    }
+
+    protected static void PausePanelActivate(){
+        frame.getContentPane().removeAll();
+        PausePanel panel = new PausePanel();
+        frame.add(panel);
+        frame.revalidate();
+        frame.repaint();
     }
 
 }
