@@ -19,9 +19,9 @@ public class SpaceInvaders {
         frame.setSize(sizeX, sizeY);
         frame.setResizable(false);
 
-        // Panel
-        GamePanelActivate();
-       
+        //homescreen HomeScreenActivate();
+        
+       GamePanelActivate();
     }
 
     protected static void HomeScreenActivate(){
@@ -33,6 +33,7 @@ public class SpaceInvaders {
         frame.add(panel);
         frame.revalidate();
         frame.setVisible(true);
+        
 
     }
 
@@ -44,6 +45,7 @@ public class SpaceInvaders {
         frame.add(panel);
         frame.revalidate();
         frame.setVisible(true);
+        
     }
 
     protected static void DeatPanelActivate( DeathPanel panel){
