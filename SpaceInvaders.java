@@ -22,16 +22,23 @@ public class SpaceInvaders {
         frame.setSize(sizeX, sizeY);
         frame.setResizable(false);
 
-        // Panel
+        GamePanelActivate();
+       
+    }
+
+    protected static void GamePanelActivate(){
+        frame.getContentPane().removeAll();
+         // Panel
         GamePanel panel = new GamePanel(); 
         panel.setBackground(Color.BLACK);
         frame.add(panel);
+        frame.revalidate();
         frame.setVisible(true);
+
     }
 
     protected static void DeatPanelActivate( DeathPanel panel){
-       
-       
+          
         frame.getContentPane().removeAll(); 
         frame.add(panel);
         frame.revalidate();
