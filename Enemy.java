@@ -44,10 +44,10 @@ public class Enemy {
                 if((newMilis-oldMillis)>250){
                     
                     if(Math.random()<0.5){
-                            moveLeft(5);
+                            moveLeft(speed*2);
                         }
                         else{
-                            moveRight(5);
+                            moveRight(speed*2);
                         }
 
 
@@ -63,20 +63,6 @@ public class Enemy {
        //GamePanel.bullets.add(bullet); // wahrscheinlich eigene liste für enemy bullets
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
