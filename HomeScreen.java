@@ -1,9 +1,5 @@
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import javax.swing.*;
+
 
 import javax.swing.JPanel;
 //diese klasse ist nicht mkir ich verstehe go nix
@@ -50,19 +46,13 @@ public class HomeScreen extends JPanel {
 
     @Override
     public void paintComponent(Graphics g) {
+
         super.paintComponent(g);
 
-        // Hintergrund
         g.setColor(Color.BLACK);
         g.fillRect(0, 0, getWidth(), getHeight());
+        
 
-        // EXTREME Überschrift
-        String title = "TIM THE FURY SLAYER Very HD 69FPS!!! EXTREME 2 Open BETA ALPHA V4.20";
-        g.setFont(new Font("Impact", Font.BOLD, 32));
-        g.setColor(Color.RED);
-        FontMetrics fm = g.getFontMetrics();
-        int textWidth = fm.stringWidth(title);
-        g.drawString(title, (getWidth() - textWidth) / 2, 120);
     }
 
     

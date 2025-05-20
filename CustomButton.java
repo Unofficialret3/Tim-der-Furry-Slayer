@@ -3,7 +3,6 @@ import java.awt.event.*;
 import javax.swing.*;
 
 
-
 class CustomButton extends JComponent {
         private String label;
         private boolean hovered = false;
@@ -11,7 +10,7 @@ class CustomButton extends JComponent {
 
         public CustomButton(String label) {
             this.label = label;
-            setPreferredSize(new Dimension(200, 50));
+            setPreferredSize(new Dimension(300, 60));
 
             addMouseListener(new MouseAdapter() {
                 @Override
@@ -44,15 +43,19 @@ class CustomButton extends JComponent {
             Graphics2D g2 = (Graphics2D) g;
             g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-            g.setColor(hovered ? new Color(100, 100, 255) : new Color(70, 70, 200));
-            g.fillRoundRect(0, 0, getWidth(), getHeight(), 15, 15);
+            GradientPaint gradient = new GradientPaint(0, 0, hovered ? new Color(255, 50, 50) : new Color(200, 0, 0),
+                                                       getWidth(), getHeight(), hovered ? new Color(255, 150, 0) : new Color(100, 0, 0));
+            g2.setPaint(gradient);
+            g2.fillRoundRect(0, 0, getWidth(), getHeight(), 20, 20);
 
             g.setColor(Color.WHITE);
-            g.setFont(new Font("SansSerif", Font.BOLD, 20));
+            g.setFont(new Font("Arial Black", Font.BOLD, 20));
             FontMetrics fm = g.getFontMetrics();
             int textWidth = fm.stringWidth(label);
             int textAscent = fm.getAscent();
 
             g.drawString(label, (getWidth() - textWidth) / 2, (getHeight() + textAscent) / 2 - 5);
-        }
     }
+    
+    
+}
