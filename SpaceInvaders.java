@@ -50,9 +50,8 @@ public class SpaceInvaders {
         frame.repaint();
     }
 
-    protected static void PausePanelActivate(){
+    protected static void PausePanelActivate(PausePanel panel){
         frame.getContentPane().removeAll();
-        PausePanel panel = new PausePanel();
         frame.add(panel);
         frame.revalidate();
         frame.repaint();

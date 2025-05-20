@@ -10,6 +10,8 @@ import java.util.Objects;
 public class Player {
     SoundPlayer player = new SoundPlayer();
 
+    int money = 0;
+
     protected int x, y, width = 100, height = 100;
     protected int speed = 15;
 
@@ -58,5 +60,9 @@ public class Player {
             g.setColor(Color.GREEN);
             g.fillRect(x, y, width, height);
         }
+    }
+
+    public void addMoney(int amount) {
+        money += amount;
     }
 }

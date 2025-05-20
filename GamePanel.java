@@ -94,7 +94,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
                 throw new RuntimeException(ex);
             }
             player1.player.play();
-            SpaceInvaders.PausePanelActivate();
+            SpaceInvaders.PausePanelActivate(new PausePanel(player1));
         }
         //enemy spawn logik
         if(enemies.isEmpty()){
