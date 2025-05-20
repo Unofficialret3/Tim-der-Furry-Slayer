@@ -41,7 +41,6 @@ public class Bullet {
             g.setColor(Color.RED);
             g.fillRect(x, y, width, height);
         }
-        System.out.printf("Y:" + y);
     }
 
     //set und getter
