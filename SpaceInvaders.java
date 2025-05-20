@@ -8,7 +8,7 @@ public class SpaceInvaders {
 
     protected static int sizeX = 1400;
     protected static int sizeY = 1000;
-    protected static JFrame frame = new JFrame("Space Invaders Very HD 60FPS!!!");
+    protected static JFrame frame = new JFrame("TIM THE FURY SLAYER Very HD 69FPS!!! EXTREME 2 Open BETA ALPHA V4.20");
 
 
     
@@ -20,9 +20,29 @@ public class SpaceInvaders {
         frame.setResizable(false);
 
         // Panel
-        GamePanel panel = new GamePanel(); 
+        GamePanelActivate();
+       
+    }
+
+    protected static void HomeScreenActivate(){
+        HomeScreen panel = new HomeScreen();
+        if(frame.getContentPane()!=null){
+            frame.getContentPane().removeAll();
+        }
         panel.setBackground(Color.BLACK);
         frame.add(panel);
+        frame.revalidate();
+        frame.setVisible(true);
+
+    }
+
+    protected static void GamePanelActivate(){
+         GamePanel panel = new GamePanel(); 
+
+        frame.getContentPane().removeAll();
+        panel.setBackground(Color.BLACK);
+        frame.add(panel);
+        frame.revalidate();
         frame.setVisible(true);
     }
 
