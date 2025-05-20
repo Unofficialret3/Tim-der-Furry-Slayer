@@ -1,5 +1,7 @@
 package Game.Panels;
 
+import Game.Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -43,8 +45,8 @@ public class DeathPanel extends JPanel implements ActionListener, KeyListener {
 
             //was es für lustige methoden gibt
         FontMetrics metrics = g.getFontMetrics(font);
-        int x = (SpaceInvaders.sizeX - metrics.stringWidth(scoreText)) / 2;
-        int y = metrics.getAscent()+ SpaceInvaders.sizeY/2;
+        int x = (Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeX - metrics.stringWidth(scoreText)) / 2;
+        int y = metrics.getAscent()+ Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeY/2;
 
             g.drawString(scoreText, x, y);
 
@@ -54,7 +56,7 @@ public class DeathPanel extends JPanel implements ActionListener, KeyListener {
             g.setColor(Color.WHITE); 
 
         FontMetrics lostMetrics = g.getFontMetrics(lostFont);
-        int xLost = (SpaceInvaders.sizeX - lostMetrics.stringWidth(lostText)) / 2;
+        int xLost = (Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeX - lostMetrics.stringWidth(lostText)) / 2;
         int yLost = y + 50; // unter den score
 
             g.drawString(lostText, xLost, yLost);

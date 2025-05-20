@@ -4,6 +4,7 @@ import Game.Objects.Bullet;
 import Game.Objects.Enemy;
 import Game.Objects.Player;
 import Game.Sound.SoundPlayer;
+import Game.Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
@@ -34,10 +35,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 
     // spieler createn
-    protected  static Player player1 = new Player((SpaceInvaders.sizeX/2)- 50, SpaceInvaders.sizeY-150); // Mitte unten
+    protected  static Player player1 = new Player((Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeX/2)- 50, Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeY-150); // Mitte unten
 
     // test enemey
-    //protected Game.Objects.Enemy enemy1 = new Game.Objects.Enemy((Game.Panels.SpaceInvaders.sizeX/2)- 50, Game.Panels.SpaceInvaders.sizeY-750 ); // mitte oben
+    //protected Game.Objects.Enemy enemy1 = new Game.Objects.Enemy((Game.SpaceInvaders.sizeX/2)- 50, Game.SpaceInvaders.sizeY-750 ); // mitte oben
 
 
 
@@ -75,7 +76,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
         // enemies malen
         for(Enemy enemy : enemies){
-            if(enemy.getY()<= SpaceInvaders.sizeY){
+            if(enemy.getY()<= Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeY){
                 //move runter y achse
                 enemy.moveDown();
                 enemy.moveRandomLR();
@@ -99,7 +100,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
                 throw new RuntimeException(ex);
             }
             player1.player.play();
-            SpaceInvaders.PausePanelActivate(new PausePanel(player1));
+            Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.PausePanelActivate(new PausePanel(player1));
         }
         //enemy spawn logik
         if(enemies.isEmpty()){
@@ -156,12 +157,12 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
                 Iterator<Enemy> itE = enemies.iterator();
                 while (itE.hasNext()) {
                     Enemy enemy = itE.next();
-                    if (enemy.getY() >= SpaceInvaders.sizeY-25) {
+                    if (enemy.getY() >= Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeY-25) {
                         itE.remove();
                         player1.player.stop();
                         // fail screen
                         DeathPanel panel = new DeathPanel(score);
-                        SpaceInvaders.DeathPanelActivate(panel);
+                        Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.DeathPanelActivate(panel);
                         panel.setBackground(Color.BLACK);
                     }
 
@@ -345,16 +346,16 @@ protected int[][] spawnPatternDNA = {
 
                 if(pattern[i][j] == 1){
                     if(i==mid){
-                        Enemy enemy = new Enemy(SpaceInvaders.sizeX/2-12, SpaceInvaders.sizeY-950 +j *100,type);
+                        Enemy enemy = new Enemy(Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeX/2-12, Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeY-950 +j *100,type);
                         enemies.add(enemy);
                     }
                     else if(i<mid){
                         
-                         Enemy enemy = new Enemy((SpaceInvaders.sizeX/2-12)-((1+i)*100), SpaceInvaders.sizeY-950+j*50,type);
+                         Enemy enemy = new Enemy((Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeX/2-12)-((1+i)*100), Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeY-950+j*50,type);
                             enemies.add(enemy);
                     }
                     else if(i>mid){
-                        Enemy enemy = new Enemy((SpaceInvaders.sizeX/2-12)+((i-1)*100), SpaceInvaders.sizeY-950+j*50,type);
+                        Enemy enemy = new Enemy((Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeX/2-12)+((i-1)*100), Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeY-950+j*50,type);
                         enemies.add(enemy);
                     }
                     else{

@@ -1,5 +1,7 @@
 package Game.Panels;
 
+import Game.Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20;
+
 import java.awt.*;
 
 import javax.swing.ImageIcon;
@@ -24,16 +26,16 @@ public class HomeScreen extends JPanel {
         // Größe setzen und zentrieren
         int btnWidth = 300;
         int btnHeight = 60;
-        int centerX = (SpaceInvaders.sizeX - btnWidth) / 2;
+        int centerX = (Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeX - btnWidth) / 2;
 
-        startButton.setBounds(centerX, SpaceInvaders.sizeY- SpaceInvaders.sizeY/4, btnWidth, btnHeight);
-        optionsButton.setBounds(centerX, SpaceInvaders.sizeY- SpaceInvaders.sizeY/4 + 80, btnWidth, btnHeight);
+        startButton.setBounds(centerX, Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeY- Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeY/4, btnWidth, btnHeight);
+        optionsButton.setBounds(centerX, Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeY- Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeY/4 + 80, btnWidth, btnHeight);
 
         // Aktionen bei Klick
         startButton.setOnClick(() -> {
             System.out.println("Spiel wird gestartet...");
             
-            SpaceInvaders.GamePanelActivate();
+            Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.GamePanelActivate();
         });
 
         optionsButton.setOnClick(() -> {

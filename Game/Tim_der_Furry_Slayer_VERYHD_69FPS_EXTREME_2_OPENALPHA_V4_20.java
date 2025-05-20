@@ -1,14 +1,19 @@
-package Game.Panels;
+package Game;
+
+import Game.Panels.DeathPanel;
+import Game.Panels.GamePanel;
+import Game.Panels.HomeScreen;
+import Game.Panels.PausePanel;
 
 import java.awt.*;
 
 import javax.swing.*;
 
 
-public class SpaceInvaders {
+public class Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20 {
 
-    protected static int sizeX = 1400;
-    protected static int sizeY = 1000;
+    public static int sizeX = 1400;
+    public static int sizeY = 1000;
     protected static JFrame frame = new JFrame();
 
     public static void main(String[] args) {
@@ -16,7 +21,7 @@ public class SpaceInvaders {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(sizeX, sizeY);
         frame.setResizable(false);
-        frame.setTitle("TIM DER FURRY SLAYER very HD 69FPS!!! EXTREME OPEN ALPHA V 4.20");
+        frame.setTitle("TIM DER FURRY SLAYER very HD 69FPS!!! EXTREME 2 OPEN ALPHA V 4.20");
         //homescreen
        HomeScreenActivate();
        //GamePanelActivate();
@@ -33,7 +38,7 @@ public class SpaceInvaders {
         frame.setVisible(true);
     }
 
-    protected static void GamePanelActivate(){
+    public static void GamePanelActivate(){
         GamePanel panel = new GamePanel();
         frame.getContentPane().removeAll();
         panel.setBackground(Color.BLACK);
@@ -44,14 +49,14 @@ public class SpaceInvaders {
         panel.requestFocusInWindow();
     }
 
-    protected static void DeathPanelActivate(DeathPanel panel){
+    public static void DeathPanelActivate(DeathPanel panel){
         frame.getContentPane().removeAll(); 
         frame.add(panel);
         frame.revalidate();
         frame.repaint();
     }
 
-    protected static void PausePanelActivate(PausePanel panel){
+    public static void PausePanelActivate(PausePanel panel){
         frame.getContentPane().removeAll();
         frame.add(panel);
         frame.revalidate();
