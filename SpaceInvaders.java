@@ -47,6 +47,8 @@ public class SpaceInvaders {
         frame.revalidate();
         frame.repaint();
         frame.setVisible(true);
+
+        panel.requestFocusInWindow();
     }
 
     protected static void DeathPanelActivate(DeathPanel panel){
