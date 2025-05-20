@@ -18,7 +18,6 @@ public class SpaceInvaders {
     public static void main(String[] args) {
 
         //jframe
-        
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(sizeX, sizeY);
         frame.setResizable(false);
