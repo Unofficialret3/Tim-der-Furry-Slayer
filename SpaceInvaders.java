@@ -11,9 +11,6 @@ public class SpaceInvaders {
     protected static JFrame frame = new JFrame("Space Invaders Very HD 60FPS!!!");
 
 
-
-
-
     
     public static void main(String[] args) {
 
