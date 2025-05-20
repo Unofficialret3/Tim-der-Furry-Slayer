@@ -8,7 +8,7 @@ public class SpaceInvaders {
 
     protected static int sizeX = 1400;
     protected static int sizeY = 1000;
-    protected static JFrame frame = new JFrame("Space Invaders Very HD 60FPS!!!");
+    protected static JFrame frame = new JFrame("FURY SLAYER Very HD 60FPS!!!");
 
 
 

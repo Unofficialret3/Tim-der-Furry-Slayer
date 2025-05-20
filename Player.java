@@ -9,7 +9,7 @@ import java.util.Objects;
 
 public class Player {
     SoundPlayer player = new SoundPlayer();
-
+    long oldMillis= 0;
     protected int x, y, width = 100, height = 100;
     protected int speed = 15;
     private BufferedImage image;  // Bild für den Spieler
@@ -36,10 +36,23 @@ public class Player {
     }
 
     public void shoot() {
-        Bullet bullet = new Bullet(x, y);
-        GamePanel.bullets.add(bullet);
-        player.playLaser();
-    }
+
+
+        long newMilis = System.currentTimeMillis();
+                
+                if((newMilis-oldMillis)>500){
+                    
+                    Bullet bullet = new Bullet(x, y);
+                    GamePanel.bullets.add(bullet);
+                    player.playLaser();
+                    oldMillis = newMilis;
+                }
+
+
+                
+   }
+
+
 
     // Spieler malen
     public void draw(Graphics g) {
