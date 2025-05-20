@@ -53,34 +53,24 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        
 
         //bullets zeichnen
         for (Bullet bullet : bullets) {
             bullet.draw(g);
             }
-        
 
-    
         // spieler zeichnen
         player1.draw(g);
 
-       
         // enemies malen
         for(Enemy enemy : enemies){
-
-
             if(enemy.getY()<= SpaceInvaders.sizeY){
                 //move runter y achse
                 enemy.moveDown();
                 enemy.moveRandomLR();
-                
             }
             else{
-                
             }
-
-
         enemy.draw(g);
         drawScore(g);
         }
@@ -94,11 +84,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
         //enemy spawn logik
         if(enemies.isEmpty()){
-
             bullets.clear();
-
             spawnEnemies();
-           
         }
 
         //bewegungen
@@ -118,7 +105,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
                 player1.shootSpecialQWeapon();
             }
 
-
             // schüsse updaten
                Iterator<Bullet> itB = bullets.iterator();
 
@@ -135,19 +121,13 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
                 // Enemies löschen wenn außerhalb
                 Iterator<Enemy> itE = enemies.iterator();
                 while (itE.hasNext()) {
-
                     Enemy enemy = itE.next();
-
                     if (enemy.getY() >= SpaceInvaders.sizeY-25) {
-                   
                         itE.remove();
-
-
                         // fail screen
                         DeathPanel panel = new DeathPanel(score);
                         SpaceInvaders.DeathPanelActivate(panel);
                         panel.setBackground(Color.BLACK);
-
                     }
 
                 }
@@ -155,26 +135,19 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
                 // Kollisionen prüfen 
                 itB = bullets.iterator();// nochmal weil der von oben schon leer ist
                 while (itB.hasNext()) {
-
                     Bullet b = itB.next();
                     itE = enemies.iterator();
-
                     while (itE.hasNext()) {
-
                         Enemy enemy = itE.next();
                             //bullet und enemy coliding
                         if (enemy.isCollidingWithBullet(b)) {
-
                             updateScore(enemy.getType());
                             b.health--;
                             if(b.health == 0){
                                 itB.remove();
                             }
-
                             itE.remove();
-
                             sounds.playEnemyDeath();
-                            
                             break; 
                             }
                     }

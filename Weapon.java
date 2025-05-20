@@ -36,8 +36,8 @@ public class Weapon {
         this.bulletHealth = bulletHealth;
 
         try {
-            // Bild aus Ressourcen laden
-            texture = ImageIO.read(Objects.requireNonNull(getClass().getResource(texturePath))); // <-- Stelle sicher, dass das Bild im Klassenpfad liegt
+
+            texture = ImageIO.read(Objects.requireNonNull(getClass().getResource(texturePath)));
         } catch (IOException | IllegalArgumentException e) {
             System.err.println("Konnte Bild nicht laden: " + e.getMessage());
         }

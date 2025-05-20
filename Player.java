@@ -13,7 +13,7 @@ public class Player {
     protected int x, y, width = 100, height = 100;
     protected int speed = 15;
 
-    private BufferedImage texture;  // Bild für den Spieler
+    private BufferedImage texture;
     Weapon mainWeapon;
     Weapon specialQWeapon;
 
@@ -23,8 +23,7 @@ public class Player {
         this.y = startY;
 
         try {
-            // Bild aus Ressourcen laden
-            texture = ImageIO.read(Objects.requireNonNull(getClass().getResource("textures/Player.png"))); // <-- Stelle sicher, dass das Bild im Klassenpfad liegt
+            texture = ImageIO.read(Objects.requireNonNull(getClass().getResource("textures/Player.png")));
         } catch (IOException | IllegalArgumentException e) {
             System.err.println("Konnte Bild nicht laden: " + e.getMessage());
             texture = null;
@@ -50,7 +49,6 @@ public class Player {
 
     }
 
-    // Spieler malen
     public void draw(Graphics g) {
         if (texture != null) {
             g.drawImage(texture, x, y, width, height, null);

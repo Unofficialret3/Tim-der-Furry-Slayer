@@ -20,8 +20,7 @@ public class Bullet {
         this.y = y;
 
         try {
-            // Bild aus Ressourcen laden
-            image = ImageIO.read(Objects.requireNonNull(getClass().getResource(texture))); // <-- Stelle sicher, dass das Bild im Klassenpfad liegt
+            image = ImageIO.read(Objects.requireNonNull(getClass().getResource(texture)));
         } catch (IOException | IllegalArgumentException e) {
             System.err.println("Konnte Bild nicht laden: " + e.getMessage());
             image = null;
