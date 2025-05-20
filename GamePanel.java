@@ -39,7 +39,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         // liste für enemys
         enemies = new ArrayList<>();
         // spawn enemies
-        spawnEnemies(spawnPattern1);
+        spawnEnemies();
 
 
 
@@ -95,22 +95,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
             bullets.clear();
 
-            Random rand = new Random();
-            int choice = rand.nextInt(3); // ergibt 0 /1/2
-
-            switch (choice) {
-                case 0:
-                    spawnEnemies(spawnPattern1);
-                    break;
-                case 1:
-                    spawnEnemies(spawnPattern2);
-                    break;
-                case 2:
-                    spawnEnemies(spawnPattern3);
-                    break;
-                default:
-                break;
-            }
+            spawnEnemies();
+           
         }
 
         //bewegungen
@@ -216,44 +202,150 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 
     //spawn patterns
-    protected int[][] spawnPattern1 = {
+    private int[][] spawnPattern1 = {
      { 1,0,0}, // linke spalte
      { 1, 1,1 } , // mitte
      { 1,0,0 }// rechte spalte
     };
-     protected int[][] spawnPattern2 = {
+     private int[][] spawnPattern2 = {
      { 0,1,0}, // linke spalte
      { 1, 0,1 } , // mitte
      { 0,1,0 }// rechte spalte
     };
-     protected int[][] spawnPattern3 = {
+     private int[][] spawnPattern3 = {
      { 1,1,1}, // linke spalte
      { 1, 1,1 } , // mitte
      { 1,1,1 }// rechte spalte
     };
+    protected int[][] spawnPatternArrow = {
+    { 0, 0, 1, 0, 0 },
+    { 0, 1, 1, 1, 0 },
+    { 1, 1, 1, 1, 1 }
+};
+protected int[][] spawnPatternShield = {
+    { 1, 1, 0, 1, 1 },
+    { 1, 0, 0, 0, 1 },
+    { 1, 1, 1, 1, 1 }
+};
+protected int[][] spawnPatternStaggered = {
+    { 1, 0, 1, 0, 1 },
+    { 0, 1, 0, 1, 0 },
+    { 1, 0, 1, 0, 1 },
+    { 0, 1, 0, 1, 0 }
+};
+protected int[][] spawnPatternCross = {
+    { 0, 0, 1, 0, 0 },
+    { 0, 0, 1, 0, 0 },
+    { 1, 1, 1, 1, 1 },
+    { 0, 0, 1, 0, 0 },
+    { 0, 0, 1, 0, 0 }
+};
+protected int[][] spawnPatternDiamond = {
+    { 0, 0, 1, 0, 0 },
+    { 0, 1, 0, 1, 0 },
+    { 1, 0, 0, 0, 1 },
+    { 0, 1, 0, 1, 0 },
+    { 0, 0, 1, 0, 0 }
+};
+protected int[][] spawnPatternChaos = {
+    { 1, 0, 1, 1, 0, 1 },
+    { 0, 1, 0, 0, 1, 0 },
+    { 1, 1, 0, 1, 1, 0 },
+    { 0, 0, 1, 0, 0, 1 }
+};
+protected int[][] spawnPatternDNA = {
+    { 1, 0, 0, 0, 1 },
+    { 0, 1, 0, 1, 0 },
+    { 0, 0, 1, 0, 0 },
+    { 0, 1, 0, 1, 0 },
+    { 1, 0, 0, 0, 1 }
+};
+
+
+
 
     //methodend
-    private void spawnEnemies(int[][] pattern) {
-        int mid = pattern.length/ 2;
-        int speed = 1;
-        int type=1;
+    private void spawnEnemies() {
+      
+        //spawnpattern choosing
+            Random rand = new Random();
+            int choice = rand.nextInt(10); // ergibt 0-9
+            
+            int[][] pattern = null;
+
+            switch (choice) {
+                case 0:
+                    pattern= spawnPattern1;
+                    break;
+                case 1:
+                    pattern= spawnPattern2;
+                    break;
+                case 2:
+                    pattern= spawnPattern3;
+                    break;
+                case 3:
+
+                    pattern=spawnPatternArrow ;
+                    break;
+
+                case 4:
+
+                    pattern=spawnPatternChaos ;
+                    break;
+
+                case 5:
+
+                    pattern=spawnPatternCross;
+                    break;
+
+                case 6:
+                    
+                    pattern=spawnPatternDNA;
+                    break;
+
+                case 7:
+
+                    pattern=spawnPatternDiamond;
+                    break;
+
+                case 8:
+
+                    pattern= spawnPatternShield;
+                    break;
+
+                case 9:
+
+                    pattern=spawnPatternStaggered;
+                    break;
+
+                default:
+                break;
+            }
+        
+            int mid = pattern.length/ 2;
 
         // enemys spawnen
         for(int i= 0;i<=pattern.length-1;i++){
             for(int j = 0;j<=pattern.length-1;j++){
 
+                
+            // zufällige typen für enemys
+            int anzahlTypen= 2;
+            int type = (int)(Math.random() * anzahlTypen) + 1;
+
+
                 if(pattern[i][j] == 1){
                     if(i==mid){
-                        Enemy enemy = new Enemy(SpaceInvaders.sizeX/2-25, SpaceInvaders.sizeY-750 +j *100,speed,type);
+                        Enemy enemy = new Enemy(SpaceInvaders.sizeX/2-12, SpaceInvaders.sizeY-950 +j *100,type);
                         enemies.add(enemy);
                     }
                     else if(i<mid){
                         
-                         Enemy enemy = new Enemy((SpaceInvaders.sizeX/2-25)-((1+i)*100), SpaceInvaders.sizeY-750+j*100,speed,type);
+                         Enemy enemy = new Enemy((SpaceInvaders.sizeX/2-12)-((1+i)*100), SpaceInvaders.sizeY-950+j*50,type);
                             enemies.add(enemy);
                     }
                     else if(i>mid){
-                        Enemy enemy = new Enemy((SpaceInvaders.sizeX/2-25)+((i-1)*100),SpaceInvaders.sizeY-750+j*100,1,1);
+                        Enemy enemy = new Enemy((SpaceInvaders.sizeX/2-12)+((i-1)*100),SpaceInvaders.sizeY-950+j*50,type);
                         enemies.add(enemy);
                     }
                     else{

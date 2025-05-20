@@ -6,8 +6,8 @@ import javax.swing.*;
 
 public class SpaceInvaders {
 
-    protected static int sizeX = 1000;
-    protected static int sizeY = 800;
+    protected static int sizeX = 1400;
+    protected static int sizeY = 1000;
     protected static JFrame frame = new JFrame("Space Invaders Very HD 60FPS!!!");
 
 
