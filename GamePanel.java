@@ -84,8 +84,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
         //enemy spawn logik
         if(enemies.isEmpty()){
-            bullets.clear();
-            spawnEnemies();
+            //bullets.clear();
+            //spawnEnemies();
         }
 
         //bewegungen
@@ -110,8 +110,23 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
                 while (itB.hasNext()) {
 
+
                     Bullet b = itB.next();
-                    b.setY(b.getY() - 10);
+                    if(!b.hit){
+                        switch (b.weaponType){
+                            case 0: b.setY(b.getY() - 10);
+                                break;
+                            case 1: b.setY(b.getY() - 20);
+                                break;
+
+                        }
+                    } else {
+                        if((System.currentTimeMillis() - b.hitTime) >= 500){
+                            itB.remove();
+                        }
+                    }
+
+
 
                     if (b.getY() <= 0) {
                         itB.remove();
@@ -142,6 +157,18 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
                             //bullet und enemy coliding
                         if (enemy.isCollidingWithBullet(b)) {
                             updateScore(enemy.getType());
+                            b.hit = true;
+                            b.hitTime = System.currentTimeMillis();
+                            switch (b.weaponType){
+                                case 1: b.setWidth(400);
+                                        b.setHeight(400);
+                                        if(!b.changedX || !b.changedY){
+                                            b.setX(b.getX() - b.getWidth() /4);
+                                            b.setY(b.getY() - b.getHeight()/2);
+                                            b.changedX = true;
+                                            b.changedY = true;
+                                        }
+                            }
                             b.health--;
                             if(b.health == 0){
                                 itB.remove();

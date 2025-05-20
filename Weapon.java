@@ -7,6 +7,9 @@ import java.util.Objects;
 import java.awt.Graphics;
 import java.awt.Color;
 
+//Weapon Types: 0 = Blaster, 1 = Grenade
+
+
 public class Weapon {
     int damage;
     int width;
@@ -16,13 +19,14 @@ public class Weapon {
     int bulletWidth;
     int bulletHeight;
     int bulletHealth;
+    int weaponType;
 
     BufferedImage texture;
     String texturePath;
     String soundPath;
     String bulletTexturePath;
 
-    public Weapon (int width, int height, int xOffset, int xBulltetOffset, int bulletWidth, int bulletHeight, int bulletHealth, int damage, String texturePath, String soundPath, String bulltetTexture) {
+    public Weapon (int width, int height, int xOffset, int xBulltetOffset, int weaponType, int bulletWidth, int bulletHeight, int bulletHealth, int damage, String texturePath, String soundPath, String bulltetTexture) {
         this.width = width;
         this.height = height;
         this.xOffset = xOffset;
@@ -34,6 +38,7 @@ public class Weapon {
         this.soundPath = soundPath;
         this.bulletTexturePath = bulltetTexture;
         this.bulletHealth = bulletHealth;
+        this.weaponType = weaponType;
 
         try {
 
@@ -54,7 +59,7 @@ public class Weapon {
     }
 
     public void shootWeapon(int x, int y, SoundPlayer sounds) {
-        Bullet bullet = new Bullet(x+xBulletOffset, y,bulletWidth, bulletHeight, bulletTexturePath, bulletHealth);
+        Bullet bullet = new Bullet(x+xBulletOffset, y,bulletWidth, bulletHeight, bulletTexturePath, bulletHealth, weaponType);
         GamePanel.bullets.add(bullet);
         try {
             sounds.loadSound(soundPath);
