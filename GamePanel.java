@@ -181,27 +181,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         repaint();
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     //spawn patterns
     private int[][] spawnPattern1 = {
      { 1,0,0}, // linke spalte

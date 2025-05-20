@@ -22,16 +22,19 @@ public class HomeScreen extends JPanel {
         startButton = new CustomButton("Spiel starten");
         optionsButton = new CustomButton("Optionen");
 
-        // Größe setzen
-        startButton.setBounds(400, 300, 200, 50);
-        optionsButton.setBounds(400, 370, 200, 50);
+        // Größe setzen und zentrieren
+        int btnWidth = 300;
+        int btnHeight = 60;
+        int centerX = (SpaceInvaders.sizeX - btnWidth) / 2;
+
+        startButton.setBounds(centerX, 300, btnWidth, btnHeight);
+        optionsButton.setBounds(centerX, 380, btnWidth, btnHeight);
 
         // Aktionen bei Klick
         startButton.setOnClick(() -> {
             System.out.println("Spiel wird gestartet...");
-            // TODO: GamePanel starten
+            
             SpaceInvaders.GamePanelActivate();
-
         });
 
         optionsButton.setOnClick(() -> {
@@ -47,17 +50,20 @@ public class HomeScreen extends JPanel {
 
     @Override
     public void paintComponent(Graphics g) {
-
         super.paintComponent(g);
 
+        // Hintergrund
         g.setColor(Color.BLACK);
         g.fillRect(0, 0, getWidth(), getHeight());
-        
 
+        // EXTREME Überschrift
+        String title = "TIM THE FURY SLAYER Very HD 69FPS!!! EXTREME 2 Open BETA ALPHA V4.20";
+        g.setFont(new Font("Impact", Font.BOLD, 32));
+        g.setColor(Color.RED);
+        FontMetrics fm = g.getFontMetrics();
+        int textWidth = fm.stringWidth(title);
+        g.drawString(title, (getWidth() - textWidth) / 2, 120);
     }
 
-
-
-   
     
 }

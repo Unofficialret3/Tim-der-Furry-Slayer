@@ -8,7 +8,7 @@ public class SpaceInvaders {
 
     protected static int sizeX = 1400;
     protected static int sizeY = 1000;
-    protected static JFrame frame = new JFrame("TIM THE FURY SLAYER Very HD 69FPS!!! EXTREME 2 Open BETA ALPHA V4.20");
+    protected static JFrame frame = new JFrame();
 
 
     
@@ -47,6 +47,8 @@ public class SpaceInvaders {
         frame.revalidate();
         frame.repaint();
         frame.setVisible(true);
+
+        panel.requestFocusInWindow();
     }
 
     protected static void DeathPanelActivate(DeathPanel panel){
