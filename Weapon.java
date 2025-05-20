@@ -9,31 +9,35 @@ import java.awt.Color;
 
 public class Weapon {
     int damage;
-    int range;
-    int speed;
     int width;
     int height;
     int xOffset;
     int xBulletOffset;
+    int bulletWidth;
+    int bulletHeight;
+    int bulletHealth;
 
     BufferedImage texture;
     String texturePath;
     String soundPath;
+    String bulletTexturePath;
 
-    public Weapon (int width, int height, int xOffset, int xBulltetOffset, int damage, int range, int speed, String texturePath, String soundPath) {
+    public Weapon (int width, int height, int xOffset, int xBulltetOffset, int bulletWidth, int bulletHeight, int bulletHealth, int damage, String texturePath, String soundPath, String bulltetTexture) {
         this.width = width;
         this.height = height;
         this.xOffset = xOffset;
         this.xBulletOffset = xBulltetOffset;
         this.damage = damage;
-        this.range = range;
-        this.speed = speed;
+        this.bulletWidth = bulletWidth;
+        this.bulletHeight = bulletHeight;
         this.texturePath = texturePath;
         this.soundPath = soundPath;
+        this.bulletTexturePath = bulltetTexture;
+        this.bulletHealth = bulletHealth;
 
         try {
-            // Bild aus Ressourcen laden
-            texture = ImageIO.read(Objects.requireNonNull(getClass().getResource(texturePath))); // <-- Stelle sicher, dass das Bild im Klassenpfad liegt
+
+            texture = ImageIO.read(Objects.requireNonNull(getClass().getResource(texturePath)));
         } catch (IOException | IllegalArgumentException e) {
             System.err.println("Konnte Bild nicht laden: " + e.getMessage());
         }
@@ -50,7 +54,7 @@ public class Weapon {
     }
 
     public void shootWeapon(int x, int y, SoundPlayer sounds) {
-        Bullet bullet = new Bullet(x+xBulletOffset, y);
+        Bullet bullet = new Bullet(x+xBulletOffset, y,bulletWidth, bulletHeight, bulletTexturePath, bulletHealth);
         GamePanel.bullets.add(bullet);
         try {
             sounds.loadSound(soundPath);
@@ -59,4 +63,5 @@ public class Weapon {
         }
         sounds.play();
     }
+
 }

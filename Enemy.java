@@ -30,8 +30,6 @@ public class Enemy {
             } else if (type == 2){
                 image = ImageIO.read(Objects.requireNonNull(getClass().getResource("textures/Enemy2.png")));
             }
-            // Bild aus Ressourcen laden
-             // <-- Stelle sicher, dass das Bild im Klassenpfad liegt
         } catch (IOException | IllegalArgumentException e) {
             System.err.println("Konnte Bild nicht laden: " + e.getMessage());
             image = null;
@@ -107,21 +105,17 @@ public class Enemy {
         }
     }
 
-    //get mothoden
     private int getSpeed() {
 
         switch (this.getType()) {
-            //nromaler enemy
+            //normaler enemy
             case 1:
                 return 1;
             //schneller enemy
             case 2 :
                 return 4;
-
             default:
-
                 return 0;
-
         }
        
     }

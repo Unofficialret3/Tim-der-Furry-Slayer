@@ -18,6 +18,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     private boolean isLeftPressed = false;
     private boolean isRightPressed = false;
     private boolean isSpacePressed = false;
+    private boolean isQPressed = false;
     SoundPlayer sounds = new SoundPlayer();
 
 
@@ -52,34 +53,24 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        
 
         //bullets zeichnen
         for (Bullet bullet : bullets) {
             bullet.draw(g);
             }
-        
 
-    
         // spieler zeichnen
         player1.draw(g);
 
-       
         // enemies malen
         for(Enemy enemy : enemies){
-
-
             if(enemy.getY()<= SpaceInvaders.sizeY){
                 //move runter y achse
                 enemy.moveDown();
                 enemy.moveRandomLR();
-                
             }
             else{
-                
             }
-
-
         enemy.draw(g);
         drawScore(g);
         }
@@ -93,11 +84,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
         //enemy spawn logik
         if(enemies.isEmpty()){
-
             bullets.clear();
-
             spawnEnemies();
-           
         }
 
         //bewegungen
@@ -113,6 +101,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
                 player1.shootMainWeapon();
             }
 
+            if(isQPressed){
+                player1.shootSpecialQWeapon();
+            }
 
             // schüsse updaten
                Iterator<Bullet> itB = bullets.iterator();
@@ -130,19 +121,13 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
                 // Enemies löschen wenn außerhalb
                 Iterator<Enemy> itE = enemies.iterator();
                 while (itE.hasNext()) {
-
                     Enemy enemy = itE.next();
-
                     if (enemy.getY() >= SpaceInvaders.sizeY-25) {
-                   
                         itE.remove();
-
-
                         // fail screen
                         DeathPanel panel = new DeathPanel(score);
                         SpaceInvaders.DeathPanelActivate(panel);
                         panel.setBackground(Color.BLACK);
-
                     }
 
                 }
@@ -150,22 +135,19 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
                 // Kollisionen prüfen 
                 itB = bullets.iterator();// nochmal weil der von oben schon leer ist
                 while (itB.hasNext()) {
-
                     Bullet b = itB.next();
                     itE = enemies.iterator();
-
                     while (itE.hasNext()) {
-
                         Enemy enemy = itE.next();
                             //bullet und enemy coliding
                         if (enemy.isCollidingWithBullet(b)) {
-
                             updateScore(enemy.getType());
-                            itB.remove();
+                            b.health--;
+                            if(b.health == 0){
+                                itB.remove();
+                            }
                             itE.remove();
-
                             sounds.playEnemyDeath();
-                            
                             break; 
                             }
                     }
@@ -352,10 +334,6 @@ protected int[][] spawnPatternDNA = {
     g.drawString("Score: " + score, 10, 20); // Links oben bei (10, 20)
 }
 
-
-
-
-
     // Tasteneingaben
     @Override public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
@@ -363,13 +341,14 @@ protected int[][] spawnPatternDNA = {
         if (key == KeyEvent.VK_LEFT|| key == KeyEvent.VK_A ) isLeftPressed= true;   // mit booleans damit parralele eingaben möglich sind
         if (key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D) isRightPressed = true;
         if (key == KeyEvent.VK_SPACE ) isSpacePressed= true ;
+        if (key == KeyEvent.VK_Q) isQPressed = true;
     }
     @Override public void keyReleased(KeyEvent e) {
         int key = e.getKeyCode();
-        System.out.println("Basüdasd");
         if (key == KeyEvent.VK_LEFT|| key == KeyEvent.VK_A ) isLeftPressed= false;   
         if (key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D) isRightPressed = false;
         if (key == KeyEvent.VK_SPACE ) isSpacePressed= false ;
+        if (key == KeyEvent.VK_Q) isQPressed= false;
 
     }
     @Override public void keyTyped(KeyEvent e) {}
