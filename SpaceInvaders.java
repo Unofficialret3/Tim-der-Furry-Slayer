@@ -11,9 +11,6 @@ public class SpaceInvaders {
     protected static JFrame frame = new JFrame("TIM THE FURY SLAYER Very HD 69FPS!!! EXTREME 2 Open BETA ALPHA V4.20");
 
 
-
-
-
     
     public static void main(String[] args) {
 

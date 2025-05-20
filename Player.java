@@ -13,6 +13,7 @@ public class Player {
     protected int x, y, width = 100, height = 100;
     protected int speed = 15;
     private BufferedImage image;  // Bild für den Spieler
+    Weapon weapon;
 
     public Player(int startX, int startY) {
         this.x = startX;
@@ -25,6 +26,7 @@ public class Player {
             System.err.println("Konnte Bild nicht laden: " + e.getMessage());
             image = null;
         }
+         weapon = new Weapon(50, 50, 10, 10, 10,"textures/Slingshot.png", "sounsd/throw.wav");
     }
 
     public void moveLeft() {
@@ -45,6 +47,7 @@ public class Player {
     public void draw(Graphics g) {
         if (image != null) {
             g.drawImage(image, x, y, width, height, null);
+            weapon.drawWeapon(g, x, y);
         } else {
             // Fallback: grünes Rechteck
             g.setColor(Color.GREEN);
