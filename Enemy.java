@@ -8,10 +8,12 @@ import java.util.Objects;
 
 
 public class Enemy {
-
-
-    private int x, y, width = 100, height = 100, type ;
-    private int speed ;
+    private int x;
+    private int y;
+    private final int width = 100;
+    private final int height = 100;
+    private final int type ;
+    private final int speed ;
 
     long oldMillis= 0;
 
@@ -72,12 +74,12 @@ public class Enemy {
         
     }
 
-    public void shoot() {
+    //public void shoot() {
         //TODO: für gegener machen und dann auch kollison mit spieler 
        // Bullet bullet = new Bullet(x,y);
        //GamePanel.bullets.add(bullet); // wahrscheinlich eigene liste für enemy bullets
 
-    }
+    //}
 
 
 
@@ -107,28 +109,23 @@ public class Enemy {
 
     //get mothoden
     private int getSpeed() {
-       
+
         switch (this.getType()) {
             //nromaler enemy
             case 1:
                 return 1;
-            //schneller enemy 
-            case 2 : 
+            //schneller enemy
+            case 2 :
                 return 4;
-           
+
             default:
-            
+
                 return 0;
-                
+
         }
        
     }
-
-
-
     public int getType() { return type; }
-    public int getX() { return x; }
     public int getY() { return y; }
-    public int getWidth() { return width; }
-    public int getHeight() { return height; }
+
 }

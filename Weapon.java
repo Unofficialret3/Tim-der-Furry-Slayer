@@ -1,11 +1,11 @@
 import javax.imageio.ImageIO;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.util.Objects;
+import java.awt.Graphics;
+import java.awt.Color;
 
 public class Weapon {
     int damage;
@@ -54,11 +54,7 @@ public class Weapon {
         GamePanel.bullets.add(bullet);
         try {
             sounds.loadSound(soundPath);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (UnsupportedAudioFileException e) {
-            throw new RuntimeException(e);
-        } catch (LineUnavailableException e) {
+        } catch (IOException | UnsupportedAudioFileException | LineUnavailableException e) {
             throw new RuntimeException(e);
         }
         sounds.play();

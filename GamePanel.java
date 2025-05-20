@@ -109,7 +109,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
             // Schießen 
             if (isSpacePressed) {
-                player1.shoot();
+                player1.shootMainWeapon();
             }
 
 
@@ -139,7 +139,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
                         // fail screen
                         DeathPanel panel = new DeathPanel(score);
-                        SpaceInvaders.DeatPanelActivate(panel);
+                        SpaceInvaders.DeathPanelActivate(panel);
                         panel.setBackground(Color.BLACK);
 
                     }

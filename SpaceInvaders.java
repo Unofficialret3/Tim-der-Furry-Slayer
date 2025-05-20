@@ -46,7 +46,7 @@ public class SpaceInvaders {
         frame.setVisible(true);
     }
 
-    protected static void DeatPanelActivate( DeathPanel panel){
+    protected static void DeathPanelActivate(DeathPanel panel){
        
        
         frame.getContentPane().removeAll(); 
