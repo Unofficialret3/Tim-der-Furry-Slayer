@@ -20,7 +20,7 @@ public class Player {
 
         try {
             // Bild aus Ressourcen laden
-            image = ImageIO.read(Objects.requireNonNull(getClass().getResource("images/Player.png"))); // <-- Stelle sicher, dass das Bild im Klassenpfad liegt
+            image = ImageIO.read(Objects.requireNonNull(getClass().getResource("textures/Player.png"))); // <-- Stelle sicher, dass das Bild im Klassenpfad liegt
         } catch (IOException | IllegalArgumentException e) {
             System.err.println("Konnte Bild nicht laden: " + e.getMessage());
             image = null;
@@ -38,7 +38,7 @@ public class Player {
     public void shoot() {
         Bullet bullet = new Bullet(x, y);
         GamePanel.bullets.add(bullet);
-        player.playLaser();
+        player.playThrow();
     }
 
     // Spieler malen

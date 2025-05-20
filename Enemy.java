@@ -1,24 +1,39 @@
 //imports
+import javax.imageio.ImageIO;
 import java.awt.Graphics;
 import java.awt.Color;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.util.Objects;
 
 
 public class Enemy {
 
 
-    private int x, y, width = 25, height = 25, type ;
+    private int x, y, width = 100, height = 100, type ;
     private int speed ;
 
     long oldMillis= 0;
 
-
+    private BufferedImage image;
     public Enemy(int startX, int startY,int type) {
         this.x = startX;
         this.y = startY;
         //später brauchbar
         this.type=type;
         this.speed= this.getSpeed();
-        
+        try {
+            if(type == 1){
+                image = ImageIO.read(Objects.requireNonNull(getClass().getResource("textures/Enemy.png")));
+            } else if (type == 2){
+                image = ImageIO.read(Objects.requireNonNull(getClass().getResource("textures/Enemy2.png")));
+            }
+            // Bild aus Ressourcen laden
+             // <-- Stelle sicher, dass das Bild im Klassenpfad liegt
+        } catch (IOException | IllegalArgumentException e) {
+            System.err.println("Konnte Bild nicht laden: " + e.getMessage());
+            image = null;
+        }
     }
 
     
@@ -82,8 +97,12 @@ public class Enemy {
 
     //enemy  malen
     public void draw(Graphics g) {
-        g.setColor(Color.PINK);
-        g.fillRect(x, y, width, height);
+        if (image != null) {
+            g.drawImage(image, x, y, width, height, null);
+        } else {
+            g.setColor(Color.PINK);
+            g.fillRect(x, y, width, height);
+        }
     }
 
     //get mothoden

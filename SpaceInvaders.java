@@ -10,11 +10,6 @@ public class SpaceInvaders {
     protected static int sizeY = 1000;
     protected static JFrame frame = new JFrame("Space Invaders Very HD 60FPS!!!");
 
-
-
-
-
-    
     public static void main(String[] args) {
 
         //jframe
@@ -30,8 +25,7 @@ public class SpaceInvaders {
     }
 
     protected static void DeatPanelActivate( DeathPanel panel){
-       
-       
+
         frame.getContentPane().removeAll(); 
         frame.add(panel);
         frame.revalidate();

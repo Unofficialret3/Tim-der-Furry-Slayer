@@ -6,16 +6,12 @@ import java.awt.event.KeyListener;
 import javax.swing.*;
 
 public class DeathPanel extends JPanel implements ActionListener, KeyListener {
-    
-
 
     private Timer timer;
     private long score;
     public DeathPanel(long score) {
 
         this.score=score;
-
-
             setFocusable(true);
             addKeyListener((KeyListener) this);
 
@@ -27,23 +23,17 @@ public class DeathPanel extends JPanel implements ActionListener, KeyListener {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        
         drawScore(g);
-        
-  
-    
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        
     }
 
 
 
 
     private void drawScore(Graphics g) {
-            
         String scoreText = "Score: " + score;
         Font font = new Font("SansSerif", Font.BOLD, 60); 
 
@@ -69,15 +59,6 @@ public class DeathPanel extends JPanel implements ActionListener, KeyListener {
             g.drawString(lostText, xLost, yLost);
     
 }
-
-
-
-
-
-
-
-
-
 
      @Override public void keyPressed(KeyEvent e) {
            ;
