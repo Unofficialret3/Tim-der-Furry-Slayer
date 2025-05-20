@@ -234,10 +234,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
     //methodend
     private void spawnEnemies(int[][] pattern) {
-        
-        
         int mid = pattern.length/ 2;
-
+        int speed = 1;
+        int type=1;
 
         // enemys spawnen
         for(int i= 0;i<=pattern.length-1;i++){
@@ -245,16 +244,16 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
                 if(pattern[i][j] == 1){
                     if(i==mid){
-                        Enemy enemy = new Enemy(SpaceInvaders.sizeX/2-25, SpaceInvaders.sizeY-750 +j *100);
+                        Enemy enemy = new Enemy(SpaceInvaders.sizeX/2-25, SpaceInvaders.sizeY-750 +j *100,speed,type);
                         enemies.add(enemy);
                     }
                     else if(i<mid){
                         
-                         Enemy enemy = new Enemy((SpaceInvaders.sizeX/2-25)-((1+i)*100), SpaceInvaders.sizeY-750+j*100);
+                         Enemy enemy = new Enemy((SpaceInvaders.sizeX/2-25)-((1+i)*100), SpaceInvaders.sizeY-750+j*100,speed,type);
                             enemies.add(enemy);
                     }
                     else if(i>mid){
-                        Enemy enemy = new Enemy((SpaceInvaders.sizeX/2-25)+((i-1)*100),SpaceInvaders.sizeY-750+j*100);
+                        Enemy enemy = new Enemy((SpaceInvaders.sizeX/2-25)+((i-1)*100),SpaceInvaders.sizeY-750+j*100,1,1);
                         enemies.add(enemy);
                     }
                     else{

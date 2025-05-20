@@ -7,16 +7,17 @@ public class Enemy {
 
 
     private int x, y, width = 50, height = 50, type ;
-    private int speed = 1;
+    private int speed ;
 
     long oldMillis= 0;
 
 
-    public Enemy(int startX, int startY) {
+    public Enemy(int startX, int startY,int speed,int type) {
         this.x = startX;
         this.y = startY;
+        this.speed=speed;
         //später brauchbar
-        this.type= 1;
+        this.type=type;
     }
 
     public void moveLeft(int s) {
