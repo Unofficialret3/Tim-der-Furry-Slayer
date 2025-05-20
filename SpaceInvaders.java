@@ -18,9 +18,10 @@ public class SpaceInvaders {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(sizeX, sizeY);
         frame.setResizable(false);
+        frame.setTitle("TIM DER FURRY SLAYER very HD 69FPS!!! EXTREME OPEN BETA ALPHA V 4.20");
 
         //homescreen
-       // HomeScreenActivate();
+       //HomeScreenActivate();
         
        GamePanelActivate();
     }
