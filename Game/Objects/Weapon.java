@@ -56,6 +56,24 @@ public class Weapon {
             System.err.println("Konnte Bild nicht laden: " + e.getMessage());
         }
     }
+    //copy von waffen
+    public Weapon(Weapon original) {
+        this(
+                original.width,
+                original.height,
+                original.xOffset,
+                original.xBulletOffset,
+                original.weaponType,
+                original.bulletWidth,
+                original.bulletHeight,
+                original.bulletHealth,
+                original.damage,
+                original.fireRate,
+                original.texturePath,
+                original.soundPath,
+                original.bulletTexturePath
+        );
+    }
 
     public void drawWeapon(Graphics g, int x, int y) {
         if (texture != null) {

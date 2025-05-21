@@ -46,7 +46,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         requestFocusInWindow();
         setFocusable(true);
         addKeyListener(this);
-        shopManager =new ShopManager();
+        shopManager =new ShopManager(player);
 
         //listew für bullets initaliesieren
         bullets = new ArrayList<>();

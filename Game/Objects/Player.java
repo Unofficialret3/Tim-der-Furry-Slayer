@@ -18,8 +18,8 @@ public class Player {
     protected int speed = 15;
 
     private BufferedImage texture;
-    Weapon mainWeapon;
-    Weapon specialQWeapon;
+   private Weapon mainWeapon;
+   private Weapon specialQWeapon;
 
 
 
@@ -35,7 +35,7 @@ public class Player {
             System.err.println("Konnte Bild nicht laden: " + e.getMessage());
             texture = null;
         }
-         mainWeapon = new Weapon(50, 50, 70, 85,0, 10, 10, 1, 1, 8,"/textures/Slingshot.png", "ressources/sounds/throw.wav", "/textures/StonePebble.png");
+         mainWeapon = new Weapon(50, 50, 70, 85,0, 10, 10, 1, 1, 4,"/textures/Slingshot.png", "ressources/sounds/throw.wav", "/textures/StonePebble.png");
          specialQWeapon = new Weapon(200, 200, 70, 0,1, 200, 200, 10, 10,0.5,"/textures/Slingshot.png", "ressources/sounds/throw.wav", "/textures/StonePebble.png");
     }
 
@@ -74,4 +74,8 @@ public class Player {
     public int getMoney() {return money;}
 
     public Weapon getMainWeapon() {return mainWeapon;}
+
+    public void setMainWeapon( Weapon mainWeapon) {
+        this.mainWeapon=mainWeapon;
+    }
 }
