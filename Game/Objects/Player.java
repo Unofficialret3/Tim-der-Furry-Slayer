@@ -20,9 +20,10 @@ public class Player {
 
     private BufferedImage texture;
     Weapon mainWeapon;
+    String mainWeaponIdleTexturePath = "/textures/weapons/gun_un_fired.png";
     Weapon specialQWeapon;
-    String[] mainWeaponTexturePaths = new String[] {"/textures/weapons/gun_fired.png", "/textures/weapons/gun_unfired.png"};
-    String[] specialQWeaponTexturePaths = new String[] {"/textures/weapons/gun_unfired.png"};
+    String[] mainWeaponTexturePaths = new String[] {"/textures/weapons/gun_fired_1.png", "/textures/weapons/gun_fired_2.png", "/textures/weapons/gun_fired_3.png"};
+    String[] specialQWeaponTexturePaths = new String[] {"/textures/weapons/Slingshot.png"};
 
     public Player(int startX, int startY) {
         this.x = startX;
@@ -35,7 +36,7 @@ public class Player {
             System.err.println("Konnte Bild nicht laden: " + e.getMessage());
             texture = null;
         }
-         mainWeapon = new Weapon(50,  85,0, 10, 10, 1, 1, 8,"ressources/sounds/throw.wav", "/textures/StonePebble.png", new AnimationManager(100, 100, 2, 100, mainWeaponTexturePaths, mainWeaponTexturePaths[1]));
+         mainWeapon = new Weapon(70,  85,0, 10, 10, 1, 1, 8,"ressources/sounds/throw.wav", "/textures/StonePebble.png", new AnimationManager(50, 100, 3, 10, mainWeaponTexturePaths, mainWeaponIdleTexturePath));
          mainWeapon.getAnimationManager().startAnimation(1, 1, true); // Startanimation beim Spielstart
 
         specialQWeapon = new Weapon(200,  0,1, 200, 200, 10, 10,0.5,"ressources/sounds/throw.wav", "/textures/StonePebble.png", new AnimationManager(200, 200, 1, 1, specialQWeaponTexturePaths, specialQWeaponTexturePaths[0]));
