@@ -1,13 +1,12 @@
 package Game.Shop;
 
 import Game.Objects.Player;
+import Game.Objects.Weapon;
 
 public class ShopManager {
     int itemCount = 1;
     WeaponItem[] items = new WeaponItem[itemCount];
-
     public ShopManager() {
-
     }
 
     public void buyItem(int index, Player player) {

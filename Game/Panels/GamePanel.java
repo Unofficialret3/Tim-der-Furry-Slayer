@@ -74,6 +74,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
         // spieler zeichnen
         player1.draw(g);
+        player1.getMainWeapon().getAnimationManager().update();
 
         // enemies malen
         for(Enemy enemy : enemies){

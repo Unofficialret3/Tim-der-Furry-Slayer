@@ -1,4 +1,5 @@
 package Game.Objects;//imports
+import Game.Animation.AnimationManager;
 import Game.Sound.SoundPlayer;
 
 import javax.imageio.ImageIO;
@@ -20,13 +21,12 @@ public class Player {
     private BufferedImage texture;
     Weapon mainWeapon;
     Weapon specialQWeapon;
-
-
+    String[] mainWeaponTexturePaths = new String[] {"/textures/weapons/gun_fired.png", "/textures/weapons/gun_unfired.png"};
+    String[] specialQWeaponTexturePaths = new String[] {"/textures/weapons/gun_unfired.png"};
 
     public Player(int startX, int startY) {
         this.x = startX;
         this.y = startY;
-
 
         try {
             texture = ImageIO.read(Objects.requireNonNull(getClass().getResource("/textures/Player.png")));
@@ -35,8 +35,10 @@ public class Player {
             System.err.println("Konnte Bild nicht laden: " + e.getMessage());
             texture = null;
         }
-         mainWeapon = new Weapon(50, 50, 70, 85,0, 10, 10, 1, 1, 8,"/textures/Slingshot.png", "ressources/sounds/throw.wav", "/textures/StonePebble.png");
-         specialQWeapon = new Weapon(200, 200, 70, 0,1, 200, 200, 10, 10,0.5,"/textures/Slingshot.png", "ressources/sounds/throw.wav", "/textures/StonePebble.png");
+         mainWeapon = new Weapon(50,  85,0, 10, 10, 1, 1, 8,"ressources/sounds/throw.wav", "/textures/StonePebble.png", new AnimationManager(100, 100, 2, 100, mainWeaponTexturePaths, mainWeaponTexturePaths[1]));
+         mainWeapon.getAnimationManager().startAnimation(1, 1, true); // Startanimation beim Spielstart
+
+        specialQWeapon = new Weapon(200,  0,1, 200, 200, 10, 10,0.5,"ressources/sounds/throw.wav", "/textures/StonePebble.png", new AnimationManager(200, 200, 1, 1, specialQWeaponTexturePaths, specialQWeaponTexturePaths[0]));
     }
 
     public void moveLeft() {
@@ -59,7 +61,8 @@ public class Player {
     public void draw(Graphics g) {
         if (texture != null) {
             g.drawImage(texture, x, y, width, height, null);
-            mainWeapon.drawWeapon(g, x, y);
+            //mainWeapon.drawWeapon(x, y, g);
+            mainWeapon.getAnimationManager().draw(g, x + mainWeapon.getXOffset(), y);
         } else {
             // Fallback: grünes Rechteck
             g.setColor(Color.GREEN);
