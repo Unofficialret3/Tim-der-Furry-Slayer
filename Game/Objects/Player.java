@@ -77,4 +77,8 @@ public class Player {
     public int getMoney() {return money;}
 
     public Weapon getMainWeapon() {return mainWeapon;}
+
+    public void setMainWeapon( Weapon mainWeapon) {
+        this.mainWeapon=mainWeapon;
+    }
 }

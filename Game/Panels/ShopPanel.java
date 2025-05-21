@@ -32,11 +32,13 @@ public class ShopPanel extends JPanel {
 
 
         BackButton.setOnClick(() -> {
+            System.out.println("firerate: "+ pausePanel.gamePanel.getPlayer().getMainWeapon().getFireRate());
             Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.PausePanelActivate(pausePanel);
+
         });
         UpgradeMainWeaponButton.setOnClick(() -> {
             System.out.println("Krasse waffe .xml...");
-            pausePanel.gamePanel.getPlayer().getMainWeapon().setFireRate(2*pausePanel.gamePanel.getPlayer().getMainWeapon().getFireRate());
+            shopManager.buyItem(0,pausePanel.gamePanel.getPlayer());
         });
         add(BackButton);
         add(UpgradeMainWeaponButton);

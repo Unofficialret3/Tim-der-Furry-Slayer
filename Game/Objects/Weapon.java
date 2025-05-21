@@ -1,11 +1,12 @@
 package Game.Objects;
 
 import Game.Animation.AnimationManager;
+import Game.Animation.AnimationManager;
 import Game.Sound.SoundPlayer;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-import java.awt.*;
 import java.io.IOException;
+
 import Game.Panels.GamePanel;
 
 //Game.Objects.Weapon Types: 0 = Blaster, 1 = Grenade
@@ -39,6 +40,22 @@ public class Weapon {
         this.weaponType = weaponType;
         this.fireRate=fireRate;
         this.animationManager = animationManager;
+    }
+    //copy von waffen
+    public Weapon(Weapon original) {
+        this(
+                original.xOffset,
+                original.xBulletOffset,
+                original.weaponType,
+                original.bulletWidth,
+                original.bulletHeight,
+                original.bulletHealth,
+                original.damage,
+                original.fireRate,
+                original.soundPath,
+                original.bulletTexturePath,
+                original.animationManager
+        );
     }
 
     public void shootWeapon(int x, int y, SoundPlayer sounds) {
