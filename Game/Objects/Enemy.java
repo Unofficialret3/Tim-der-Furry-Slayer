@@ -36,8 +36,6 @@ public class Enemy {
         }
     }
 
-    
-
     public void moveLeft(int s) {
         x -= s;
     }
@@ -52,24 +50,17 @@ public class Enemy {
         y -= speed;
     }
     public void moveRandomLR(){
-
         long newMilis = System.currentTimeMillis();
-                
                 //wenn nicht bewegt seit x milis
                 if((newMilis-oldMillis)>250){
-                    
                     if(Math.random()<0.5){
                             moveLeft(speed*2);
                         }
                         else{
                             moveRight(speed*2);
                         }
-
-
                 oldMillis = newMilis;
                 }
-
-        
     }
 
     //public void shoot() {
@@ -78,9 +69,6 @@ public class Enemy {
        //Game.Panels.GamePanel.bullets.add(bullet); // wahrscheinlich eigene liste für enemy bullets
 
     //}
-
-
-
 
     public boolean isCollidingWithBullet(Bullet b){
 
@@ -91,9 +79,7 @@ public class Enemy {
 
     // wenn eine kannte sich iwi berührt bzw überschneidet dann true ( AABB-Kollision (Axis-Aligned Bounding Box))
     return bulletX < x + width && bulletX + bulletW > x && bulletY < y + height && bulletY + bulletH > y;
-
     }
-
 
     //enemy  malen
     public void draw(Graphics g) {
@@ -121,5 +107,4 @@ public class Enemy {
     }
     public int getType() { return type; }
     public int getY() { return y; }
-
 }
