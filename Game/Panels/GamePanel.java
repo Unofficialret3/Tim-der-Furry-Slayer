@@ -36,6 +36,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     protected  ShopManager shopManager;
 
 
+
     // test enemey
     //protected Game.Objects.Enemy enemy1 = new Game.Objects.Enemy((Game.SpaceInvaders.sizeX/2)- 50, Game.SpaceInvaders.sizeY-750 ); // mitte oben
 

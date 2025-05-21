@@ -23,7 +23,7 @@ public class Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20 {
         frame.setResizable(false);
         frame.setTitle("TIM DER FURRY SLAYER very HD 69FPS!!! EXTREME 2 OPEN ALPHA V 4.20");
         //homescreen
-       //HomeScreenActivate();
+      // HomeScreenActivate();
        GamePanelActivate();
     }
 
@@ -62,6 +62,7 @@ public class Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20 {
         frame.add(panel);
         frame.revalidate();
         frame.repaint();
+
     }
 
     public static void PausePanelActivate(PausePanel panel){
@@ -69,6 +70,7 @@ public class Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20 {
         frame.add(panel);
         frame.revalidate();
         frame.repaint();
+        panel.requestFocusInWindow();
     }
 
     public static  void ShopPanelActivate(ShopPanel panel){
@@ -76,6 +78,7 @@ public class Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20 {
         frame.add(panel);
         frame.revalidate();
         frame.repaint();
+        panel.requestFocusInWindow();
     }
 
 }

@@ -20,14 +20,20 @@ public class ShopPanel extends JPanel {
       //  background = new ImageIcon("");
         background= null;
         //buttons
-        int btnWidth = 300;
-        int btnHeight = 60;
+        int btnWidth = 450;
+        int btnHeight = 300;
         int centerX = (Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeX - btnWidth) / 2;
-        UpgradeMainWeaponButton = new CustomButton("Upgrade Main weapon");
-        UpgradeMainWeaponButton.setBounds(centerX, Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeY- (Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeY/4), btnWidth, btnHeight);
+
+        if(shopManager.items[0].getLvl()<=8) {
+            UpgradeMainWeaponButton = new CustomButton("Upgrade Main weapon for :" + shopManager.items[0].getPrice());
+        }
+        else {
+            UpgradeMainWeaponButton = new CustomButton("Max LEVEL");
+        }
+        UpgradeMainWeaponButton.setBounds(centerX-450, Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeY- (Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeY/2+150), btnWidth, btnHeight);
 
         BackButton = new CustomButton("BACK");
-        BackButton.setBounds(centerX, Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeY- (Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeY/4-2*btnHeight), btnWidth, btnHeight);
+        BackButton.setBounds(centerX, Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeY- (Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeY/4), btnWidth, btnHeight-150);
 
 
 
@@ -37,8 +43,16 @@ public class ShopPanel extends JPanel {
 
         });
         UpgradeMainWeaponButton.setOnClick(() -> {
-            System.out.println("Krasse waffe .xml...");
-            shopManager.buyItem(0,pausePanel.gamePanel.getPlayer());
+
+            if(shopManager.items[0].getLvl()<=8) {
+                System.out.println("Krasse waffe .xml...");
+                shopManager.setUpgradingMainWeapon(true);
+                shopManager.buyItem(0, pausePanel.gamePanel.getPlayer());
+                UpgradeMainWeaponButton.setLabel("Upgrade Main weapon for: " + shopManager.items[0].getPrice());
+            }
+            else{
+                UpgradeMainWeaponButton.setLabel("Max LEVEL");
+            }
         });
         add(BackButton);
         add(UpgradeMainWeaponButton);
