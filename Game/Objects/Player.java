@@ -70,4 +70,8 @@ public class Player {
     public void addMoney(int amount) {
         money += amount;
     }
+
+    public int getMoney() {return money;}
+
+    public Weapon getMainWeapon() {return mainWeapon;}
 }

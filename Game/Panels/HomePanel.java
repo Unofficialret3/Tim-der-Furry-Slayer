@@ -7,13 +7,14 @@ import java.awt.*;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 //diese klasse ist nicht mkir ich verstehe go nix
-public class HomeScreen extends JPanel {
+public class HomePanel extends JPanel {
 
     private final Image background;
+
     private final CustomButton startButton;
     private final CustomButton optionsButton;
 
-     public HomeScreen() {
+     public HomePanel() {
         setFocusable(true);
 
         setLayout(null); // manuelle Platzierung

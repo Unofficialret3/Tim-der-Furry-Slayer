@@ -82,4 +82,46 @@ public class Weapon {
             timeOld = System.currentTimeMillis();
         }
     }
+
+    public int getDamage() {
+        return damage;
+    }
+
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public int getBulletHealth() {
+        return bulletHealth;
+    }
+
+    public void setBulletHealth(int bulletHealth) {
+        this.bulletHealth = bulletHealth;
+    }
+
+    public double getFireRate() {
+        return fireRate;
+    }
+
+    public void setFireRate(double fireRate) {
+        this.fireRate = fireRate;
+    }
 }
+
+

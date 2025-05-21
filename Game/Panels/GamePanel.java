@@ -3,6 +3,7 @@ package Game.Panels;
 import Game.Objects.Bullet;
 import Game.Objects.Enemy;
 import Game.Objects.Player;
+import Game.Shop.ShopManager;
 import Game.Sound.SoundPlayer;
 import Game.Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20;
 
@@ -32,7 +33,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     private boolean isESCPressed = false;
     private boolean paused = false;
     SoundPlayer sounds = new SoundPlayer();
-
+    protected  ShopManager shopManager;
 
 
     // test enemey
@@ -45,6 +46,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         requestFocusInWindow();
         setFocusable(true);
         addKeyListener(this);
+        shopManager =new ShopManager();
 
         //listew für bullets initaliesieren
         bullets = new ArrayList<>();
@@ -83,6 +85,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
         enemy.draw(g);
         drawScore(g);
+        drawMoney(g);
         }
         
         // TODO:  und Objekte zeichnen
@@ -101,8 +104,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
                 } catch (IOException | UnsupportedAudioFileException | LineUnavailableException ex) {
                     throw new RuntimeException(ex);
                 }
-                player1.player.play();                                                                        // warum hier createn und nicht in der wie früher in death in der main classe ????
-                Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.PausePanelActivate(new PausePanel(player1, this), this);
+                player1.player.play();
+                Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.PausePanelActivate(new PausePanel(player1, this));
 
 
             }
@@ -198,8 +201,12 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
                             b.health--;
                             if(b.health == 0){
                                 itB.remove();
+
                             }
+
+
                             itE.remove();
+                            player1.addMoney(1);
                             sounds.playEnemyDeath();
                             break; 
                             }
@@ -385,7 +392,13 @@ protected int[][] spawnPatternDNA = {
     g.setColor(Color.WHITE); // Farbe z. B. weiß
     g.setFont(new Font("SansSerif", Font.BOLD, 20)); // Schriftart
     g.drawString("Score: " + score, 10, 20); // Links oben bei (10, 20)
-}
+    }
+
+    private void drawMoney(Graphics g) {
+        g.setColor(Color.WHITE); //
+        g.setFont(new Font("SansSerif", Font.BOLD, 20)); // Schriftart
+        g.drawString("Money: " + player1.getMoney(), Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeX-150, 20); // rechts oben
+    }
 
     // Tasteneingaben
     @Override public void keyPressed(KeyEvent e) {
@@ -412,4 +425,6 @@ protected int[][] spawnPatternDNA = {
     public void setPause(boolean b) {
         this.paused=b;
     }
+
+    public Player getPlayer() {return player1;}
 }

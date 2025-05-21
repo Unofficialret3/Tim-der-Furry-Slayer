@@ -1,10 +1,7 @@
 package Game;
 
 import Game.Objects.Player;
-import Game.Panels.DeathPanel;
-import Game.Panels.GamePanel;
-import Game.Panels.HomeScreen;
-import Game.Panels.PausePanel;
+import Game.Panels.*;
 
 import java.awt.*;
 
@@ -31,7 +28,7 @@ public class Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20 {
     }
 
     protected static void HomeScreenActivate(){
-        HomeScreen panel = new HomeScreen();
+        HomePanel panel = new HomePanel();
         if(frame.getContentPane()!=null){
             frame.getContentPane().removeAll();
         }
@@ -67,12 +64,18 @@ public class Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20 {
         frame.repaint();
     }
 
-    public static void PausePanelActivate(PausePanel panel,GamePanel gamePanel){
+    public static void PausePanelActivate(PausePanel panel){
         frame.getContentPane().removeAll();
         frame.add(panel);
         frame.revalidate();
         frame.repaint();
     }
 
+    public static  void ShopPanelActivate(ShopPanel panel){
+        frame.getContentPane().removeAll();
+        frame.add(panel);
+        frame.revalidate();
+        frame.repaint();
+    }
 
 }

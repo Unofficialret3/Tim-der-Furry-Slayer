@@ -3,7 +3,7 @@ package Game.Shop;
 import Game.Objects.Player;
 
 public class ShopManager {
-    int itemCount = 0;
+    int itemCount = 1;
     WeaponItem[] items = new WeaponItem[itemCount];
 
     public ShopManager() {
