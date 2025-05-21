@@ -20,7 +20,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
     private Timer timer;
     private long score;
-
+    private Player player1;
     //liste für die schüsse
     public static ArrayList<Bullet> bullets;
     protected ArrayList<Enemy> enemies;
@@ -34,15 +34,14 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     SoundPlayer sounds = new SoundPlayer();
 
 
-    // spieler createn
-    protected  static Player player1 = new Player((Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeX/2)- 50, Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeY-150); // Mitte unten
 
     // test enemey
     //protected Game.Objects.Enemy enemy1 = new Game.Objects.Enemy((Game.SpaceInvaders.sizeX/2)- 50, Game.SpaceInvaders.sizeY-750 ); // mitte oben
 
 
 
-    public GamePanel() {
+    public GamePanel(Player player) {
+        this.player1=player;
         requestFocusInWindow();
         setFocusable(true);
         addKeyListener(this);
@@ -92,15 +91,21 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO: Spiel-Logik updaten
-        if (isESCPressed && !paused) {
-            paused = true;
-            try {
-                player1.player.loadSound("ressources/sounds/pauseSound.wav");
-            } catch (IOException | UnsupportedAudioFileException | LineUnavailableException ex) {
-                throw new RuntimeException(ex);
+        if(isESCPressed) {
+            //sonst stuck
+            isESCPressed=false;
+            if (!paused) {
+                paused = true;
+                try {
+                    player1.player.loadSound("ressources/sounds/pauseSound.wav");
+                } catch (IOException | UnsupportedAudioFileException | LineUnavailableException ex) {
+                    throw new RuntimeException(ex);
+                }
+                player1.player.play();                                                                        // warum hier createn und nicht in der wie früher in death in der main classe ????
+                Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.PausePanelActivate(new PausePanel(player1, this), this);
+
+
             }
-            player1.player.play();
-            Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.PausePanelActivate(new PausePanel(player1));
         }
         //enemy spawn logik
         if(enemies.isEmpty()){
@@ -398,9 +403,13 @@ protected int[][] spawnPatternDNA = {
         if (key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D) isRightPressed = false;
         if (key == KeyEvent.VK_SPACE ) isSpacePressed= false ;
         if (key == KeyEvent.VK_Q) isQPressed= false;
-        if (key == KeyEvent.VK_ESCAPE) isESCPressed = false;
+        //if (key == KeyEvent.VK_ESCAPE) isESCPressed = false;
 
     }
     @Override public void keyTyped(KeyEvent e) {
+    }
+
+    public void setPause(boolean b) {
+        this.paused=b;
     }
 }
