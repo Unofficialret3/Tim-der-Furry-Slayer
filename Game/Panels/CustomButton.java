@@ -6,7 +6,7 @@ import javax.swing.*;
 
 
 class CustomButton extends JComponent {
-        private final String label;
+        private  String label;
         private boolean hovered = false;
         private Runnable onClick = null;
 
@@ -58,6 +58,9 @@ class CustomButton extends JComponent {
 
             g.drawString(label, (getWidth() - textWidth) / 2, (getHeight() + textAscent) / 2 - 5);
     }
-    
-    
+
+    public void setLabel(String newText) {
+        this.label = newText;
+        repaint();
+    }
 }
