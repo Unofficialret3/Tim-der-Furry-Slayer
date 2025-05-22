@@ -24,6 +24,8 @@ public class ShopPanel extends JPanel {
         int btnHeight = 300;
         int centerX = (Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeX - btnWidth) / 2;
 
+
+        //upgrade button main
         if(shopManager.items[0].getLvl()<=8) {
             UpgradeMainWeaponButton = new CustomButton("Upgrade Main weapon for :" + shopManager.items[0].getPrice());
         }

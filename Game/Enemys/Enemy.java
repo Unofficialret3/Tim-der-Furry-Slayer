@@ -1,4 +1,6 @@
-package Game.Objects;//imports
+package Game.Enemys;//imports
+import Game.Objects.Bullet;
+
 import javax.imageio.ImageIO;
 import java.awt.Graphics;
 import java.awt.Color;
