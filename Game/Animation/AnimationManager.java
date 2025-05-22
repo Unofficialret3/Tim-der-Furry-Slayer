@@ -16,7 +16,7 @@ public class AnimationManager {
     int frameStart, frameEnd;
     boolean isPlaying = false;
     boolean loop = false;
-    String idleTexturePath;// NEU
+    String idleTexturePath;
 
     public AnimationManager(int width, int height, int frameCount, int delay, String[] texturesPaths, String idleTexturePath) {
         this.width = width;
@@ -78,6 +78,8 @@ public class AnimationManager {
     public boolean isPlaying() {
         return isPlaying;
     }
+
+    public int getHeight() {return this.height;}
 }
 
 

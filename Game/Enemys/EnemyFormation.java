@@ -80,7 +80,7 @@ public abstract class EnemyFormation {
         else if (waveCount <=3){choice= rand.nextInt(2);} // ergibt 0-3
         else {choice= rand.nextInt(10);} // ergibt 0-9
 
-        int[][] pattern = null;
+        int[][] pattern =null;
 
             switch (choice) {
                 case 0:

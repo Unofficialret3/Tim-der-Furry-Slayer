@@ -1,6 +1,7 @@
 package Game.Panels;
 
 import Game.Enemys.WaveManager;
+import Game.Objects.Ability;
 import Game.Objects.Bullet;
 import Game.Enemys.Enemy;
 import Game.Objects.Player;
@@ -79,6 +80,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         // spieler zeichnen
         player1.draw(g);
         player1.getMainWeapon().getAnimationManager().update();
+        if(!player1.getSpecialQAbilitie().isReady()){
+            player1.getSpecialQAbilitie().getLoadBarAnimation().update();
+        }
 
         // enemies malen
         for(Enemy enemy : enemies){
@@ -212,7 +216,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
                                     enemy.setHP(enemy.getHP()-player1.getMainWeapon().getDamage());
                                     break;
                                 case 1: // Grenade / Q
-                                    enemy.setHP(enemy.getHP()-player1.getSpecialQWeapon().getDamage());
+                                    enemy.setHP(enemy.getHP()-player1.getSpecialQAbilitie().getDamage());
                                     break;
                                 default:
                                     // idk gar nichts i supose

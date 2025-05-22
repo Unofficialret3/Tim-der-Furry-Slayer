@@ -113,7 +113,7 @@ public class Enemy {
 
         return switch (this.getType()) {
             //normaler enemy
-            case 1 -> (int) (1 * (Math.pow(1.5, waveCount)));
+            case 1 -> (int) (1 * (Math.pow(1.25, waveCount)));
             //schneller enemy
             case 2 -> (int) (1 * (Math.pow(1.09, waveCount)));
             default -> 0;
