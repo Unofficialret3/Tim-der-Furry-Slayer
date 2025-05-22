@@ -1,6 +1,7 @@
 package Game.Enemys;//imports
 import Game.Objects.Bullet;
 
+
 import javax.imageio.ImageIO;
 import java.awt.Graphics;
 import java.awt.Color;
@@ -16,16 +17,18 @@ public class Enemy {
     private final int height = 100;
     private final int type ;
     private final int speed ;
+    private  int hp;
 
     long oldMillis= 0;
 
     private BufferedImage image;
-    public Enemy(int startX, int startY,int type) {
+    public Enemy(int startX, int startY, int type, int waveCount) {
         this.x = startX;
         this.y = startY;
         //später brauchbar
         this.type=type;
-        this.speed= this.getSpeed();
+        this.speed= this.getSpeed(waveCount);
+        this.hp = this.getHp(waveCount);
         try {
             if(type == 1){
                 image = ImageIO.read(Objects.requireNonNull(getClass().getResource("/textures/Enemy.png")));
@@ -37,6 +40,8 @@ public class Enemy {
             image = null;
         }
     }
+
+
 
     public void moveLeft(int s) {
         x -= s;
@@ -93,20 +98,31 @@ public class Enemy {
         }
     }
 
-    private int getSpeed() {
+    private int getSpeed(int waveCount) {
 
-        switch (this.getType()) {
+        return switch (this.getType()) {
             //normaler enemy
-            case 1:
-                return 1;
+            case 1 -> (int) (1 * (Math.pow(1.05, waveCount)));
             //schneller enemy
-            case 2 :
-                return 4;
-            default:
-                return 0;
-        }
+            case 2 -> (int) (2 * (Math.pow(1.05, waveCount)));
+            default -> 0;
+        };
        
+    }
+    private int getHp(int waveCount) {
+
+        return switch (this.getType()) {
+            //normaler enemy
+            case 1 -> (int) (1 * (Math.pow(1.5, waveCount)));
+            //schneller enemy
+            case 2 -> (int) (1 * (Math.pow(1.09, waveCount)));
+            default -> 0;
+        };
     }
     public int getType() { return type; }
     public int getY() { return y; }
+
+    public int getHP() {return hp;}
+
+    public void setHP(int hp) { this.hp=hp;}
 }

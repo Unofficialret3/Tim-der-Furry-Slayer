@@ -11,20 +11,26 @@ public class WaveManager {
 
 
     public WaveManager(GamePanel panel){
-        waveCount= 0;
-
-
+        WaveManager.waveCount= 0;
     }
 
 
     public static void sendWave(ArrayList<Enemy> enemies) {
 
-            //TODO: besonders einfache oder so
-            EnemyFormation.spawnEnemies(enemies);
+            //LOL Maximus´s Schwanz sehr Groß JA JA !!!
+            EnemyFormation.spawnEnemies(enemies,waveCount);
             waveCount++;
 
 
 
 
+    }
+
+    public static int getWaveCount() {
+        return waveCount;
+    }
+
+    public static void setWaveCount(int waveCount) {
+        WaveManager.waveCount = waveCount;
     }
 }

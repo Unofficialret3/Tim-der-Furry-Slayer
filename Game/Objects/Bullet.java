@@ -62,4 +62,6 @@ public class Bullet {
     public void setHeight(int height) {
         this.height = height;
     }
+
+    public int getWeaponType( ) {return this.weaponType;}
 }

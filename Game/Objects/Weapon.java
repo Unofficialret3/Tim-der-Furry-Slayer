@@ -1,7 +1,7 @@
 package Game.Objects;
 
 import Game.Animation.AnimationManager;
-import Game.Animation.AnimationManager;
+
 import Game.Sound.SoundPlayer;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
@@ -9,7 +9,7 @@ import java.io.IOException;
 
 import Game.Panels.GamePanel;
 
-//Game.Objects.Weapon Types: 0 = Blaster, 1 = Grenade
+//Game.Objects.Weapon Types: 0 = Blaster/main, 1 = Grenade/Q
 
 
 public class Weapon {
@@ -28,9 +28,9 @@ public class Weapon {
     String bulletTexturePath;
     AnimationManager animationManager;
 
-    public Weapon (int xOffset, int xBulltetOffset, int weaponType, int bulletWidth, int bulletHeight, int bulletHealth, int damage, double fireRate, String soundPath, String bulltetTexture, AnimationManager animationManager) {
+    public Weapon (int xOffset, int xBulletOffset, int weaponType, int bulletWidth, int bulletHeight, int bulletHealth, int damage, double fireRate, String soundPath, String bulltetTexture, AnimationManager animationManager) {
         this.xOffset = xOffset;
-        this.xBulletOffset = xBulltetOffset;
+        this.xBulletOffset = xBulletOffset;
         this.damage = damage;
         this.bulletWidth = bulletWidth;
         this.bulletHeight = bulletHeight;

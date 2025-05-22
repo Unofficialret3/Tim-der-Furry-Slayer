@@ -185,12 +185,14 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
                 itB = bullets.iterator();// nochmal weil der von oben schon leer ist
                 while (itB.hasNext()) {
                     Bullet b = itB.next();
+
                     itE = enemies.iterator();
                     while (itE.hasNext()) {
                         Enemy enemy = itE.next();
                             //bullet und enemy coliding
                         if (enemy.isCollidingWithBullet(b)) {
-                            updateScore(enemy.getType());
+
+
                             b.hit = true;
                             b.hitTime = System.currentTimeMillis();
                             switch (b.weaponType){
@@ -203,17 +205,34 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
                                             b.changedY = true;
                                         }
                             }
-                            b.health--;
-                            if(b.health == 0){
-                                itB.remove();
-
+                            // enemy hp updaten
+                            int weaponType = b.weaponType;
+                            switch (weaponType) {
+                                case 0: //main Weapon
+                                    enemy.setHP(enemy.getHP()-player1.getMainWeapon().getDamage());
+                                    break;
+                                case 1: // Grenade / Q
+                                    enemy.setHP(enemy.getHP()-player1.getSpecialQWeapon().getDamage());
+                                    break;
+                                default:
+                                    // idk gar nichts i supose
                             }
 
 
-                            itE.remove();
-                            player1.addMoney(1);
-                            sounds.playEnemyDeath();
-                            break; 
+                            // bullet updaten
+                            b.health--;
+                            if(b.health == 0){
+                                itB.remove();
+                            }
+                            // chekcen ob enemy weg muss
+                            if(enemy.getHP()<=0){
+                                updateScore(enemy.getType());
+                                itE.remove();
+                                player1.addMoney(1);
+                                sounds.playEnemyDeath();
+                                break;
+                            }
+
                             }
                     }
                 }

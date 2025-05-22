@@ -37,7 +37,7 @@ public class ShopManager {
     private void possibleUpgradeMain(Player player){
         //upgrade main weapon
         int newLvl = items[0].getLvl()+1 ;
-        int newPrice = calculatePrice(20,1.8,newLvl);
+        int newPrice = calculatePrice(20,1.3,newLvl);
 
         WeaponItem upgradedMainWeapon = new WeaponItem("UpgradedMainWeapon", newPrice,newLvl ,new Weapon(player.getMainWeapon()));
         upgradedMainWeapon.getWeapon().setFireRate(2 * player.getMainWeapon().getFireRate());

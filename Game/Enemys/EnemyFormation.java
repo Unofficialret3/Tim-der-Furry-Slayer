@@ -8,20 +8,6 @@ import java.util.Random;
 public abstract class EnemyFormation {
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     //spawn patterns
     private static final int[][] spawnPattern1 = {
             { 1,0,0}, // linke spalte
@@ -83,70 +69,56 @@ public abstract class EnemyFormation {
     };
 
 
-
-
-
-
-
-
-
     //Spawn Logic
-    protected static void spawnEnemies(ArrayList<Enemy> e) {
+    protected static void spawnEnemies(ArrayList<Enemy> e ,int waveCount) {
 
         //spawnpattern choosing
         Random rand = new Random();
-        int choice = rand.nextInt(10); // ergibt 0-9
+
+        int choice;
+        if(waveCount==0){ choice = 0;}
+        else if (waveCount <=3){choice= rand.nextInt(2);} // ergibt 0-3
+        else {choice= rand.nextInt(10);} // ergibt 0-9
 
         int[][] pattern = null;
 
-        switch (choice) {
-            case 0:
-                pattern= spawnPattern1;
-                break;
-            case 1:
-                pattern= spawnPattern2;
-                break;
-            case 2:
-                pattern= spawnPattern3;
-                break;
-            case 3:
+            switch (choice) {
+                case 0:
+                    pattern= spawnPattern1;
+                    break;
+                case 1:
+                    pattern= spawnPattern2;
+                    break;
+                case 2:
+                    pattern= spawnPattern3;
+                    break;
+                case 3:
+                    pattern=spawnPatternArrow ;
+                    break;
 
-                pattern=spawnPatternArrow ;
-                break;
+                case 4:
+                    pattern=spawnPatternChaos ;
+                    break;
 
-            case 4:
-
-                pattern=spawnPatternChaos ;
-                break;
-
-            case 5:
-
-                pattern=spawnPatternCross;
-                break;
-
-            case 6:
-
-                pattern=spawnPatternDNA;
-                break;
-
-            case 7:
-
-                pattern=spawnPatternDiamond;
-                break;
-
-            case 8:
-
-                pattern= spawnPatternShield;
-                break;
-
-            case 9:
-
-                pattern=spawnPatternStaggered;
-                break;
-
-            default:
-                break;
-        }
+                case 5:
+                    pattern=spawnPatternCross;
+                    break;
+                case 6:
+                    pattern=spawnPatternDNA;
+                    break;
+                case 7:
+                    pattern=spawnPatternDiamond;
+                    break;
+                case 8:
+                    pattern= spawnPatternShield;
+                    break;
+                case 9:
+                    pattern=spawnPatternStaggered;
+                    break;
+                default:
+                    System.out.println("fehler beim pattern aussuchen");
+                    break;
+            }
 
         int mid = pattern.length/ 2;
 
@@ -162,16 +134,16 @@ public abstract class EnemyFormation {
 
                 if(pattern[i][j] == 1){
                     if(i==mid){
-                        Enemy enemy = new Enemy(Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeX/2-12, Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeY-950 +j *100,type);
+                        Enemy enemy = new Enemy(Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeX/2-12, Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeY-950 +j *100,type,waveCount);
                         e.add(enemy);
                     }
                     else if(i<mid){
 
-                        Enemy enemy = new Enemy((Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeX/2-12)-((1+i)*100), Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeY-950+j*50,type);
+                        Enemy enemy = new Enemy((Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeX/2-12)-((1+i)*100), Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeY-950+j*50,type,waveCount);
                         e.add(enemy);
                     }
                     else if(i>mid){
-                        Enemy enemy = new Enemy((Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeX/2-12)+((i-1)*100), Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeY-950+j*50,type);
+                        Enemy enemy = new Enemy((Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeX/2-12)+((i-1)*100), Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeY-950+j*50,type,waveCount);
                         e.add(enemy);
                     }
                     else{

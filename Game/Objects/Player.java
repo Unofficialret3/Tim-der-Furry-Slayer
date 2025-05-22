@@ -82,4 +82,6 @@ public class Player {
     public void setMainWeapon( Weapon mainWeapon) {
         this.mainWeapon=mainWeapon;
     }
+
+    public Weapon getSpecialQWeapon() {return specialQWeapon;}
 }
