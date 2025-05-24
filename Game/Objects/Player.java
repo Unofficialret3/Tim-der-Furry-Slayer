@@ -41,7 +41,7 @@ public class Player {
             qAbilityTexture=null;
         }
          mainWeapon = new Weapon(70,  85,0, 10, 10, 1, 1, 4,"ressources/sounds/throw.wav", "/textures/stonePebble.png", new AnimationManager(50, 100, 3, 10, mainWeaponTexturePaths, mainWeaponIdleTexturePath));
-         mainWeapon.getAnimationManager().startAnimation(1, 1, true); // Startanimation beim Spielstart
+         // Startanimation beim Spielstart
 
         specialQAbilitie = new Ability(200,  0,1, 200, 200, 10, 10,0.5,"ressources/sounds/throw.wav", "/textures/StonePebble.png", new AnimationManager(200, 200, 1, 1, specialQWeaponTexturePaths, specialQWeaponTexturePaths[0]),getSpecialQAbilitieLoadBarTexturePaths);
 
