@@ -12,27 +12,21 @@ public class Bullet {
     private int width;
     private int height;
     private int x, y;
-    private BufferedImage image;
+    private final BufferedImage image;
     public int health;
     public int weaponType;
     public boolean changedX = false;
     public boolean changedY = false;
     public boolean hit = false;
     public long hitTime;
-    public Bullet (int x,int y, int width, int height, String texture, int health, int weaponType){
+    public Bullet (int x,int y, int width, int height, int health, int weaponType, BufferedImage texture) {
         this.width = width;
         this.height = height;
         this.health = health;
         this.x = x;
         this.y = y;
         this.weaponType = weaponType;
-
-        try {
-            image = ImageIO.read(Objects.requireNonNull(getClass().getResource(texture)));
-        } catch (IOException | IllegalArgumentException e) {
-            System.err.println("Konnte Bild nicht laden: " + e.getMessage());
-            image = null;
-        }
+        this.image = texture;
     }
 
     //malen

@@ -3,9 +3,13 @@ package Game.Objects;
 import Game.Animation.AnimationManager;
 
 import Game.Sound.SoundPlayer;
+
+import javax.imageio.ImageIO;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.Objects;
 
 import Game.Panels.GamePanel;
 
@@ -27,6 +31,7 @@ public class Weapon {
     String soundPath;
     String bulletTexturePath;
     AnimationManager animationManager;
+    BufferedImage bulletTexture;
 
     public Weapon (int xOffset, int xBulletOffset, int weaponType, int bulletWidth, int bulletHeight, int bulletHealth, int damage, double fireRate, String soundPath, String bulltetTexture, AnimationManager animationManager) {
         this.xOffset = xOffset;
@@ -40,6 +45,11 @@ public class Weapon {
         this.weaponType = weaponType;
         this.fireRate=fireRate;
         this.animationManager = animationManager;
+        try {
+            bulletTexture = ImageIO.read(Objects.requireNonNull(getClass().getResource(bulletTexturePath)));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
     //copy von waffen
     public Weapon(Weapon original) {
@@ -62,7 +72,7 @@ public class Weapon {
 
         if(System.currentTimeMillis()>=timeOld + 1000/fireRate ){
 
-            Bullet bullet = new Bullet(x+xBulletOffset, y,bulletWidth, bulletHeight, bulletTexturePath, bulletHealth, weaponType);
+            Bullet bullet = new Bullet(x+xBulletOffset, y,bulletWidth, bulletHeight, bulletHealth, weaponType, bulletTexture);
             GamePanel.bullets.add(bullet);
             try {
                 sounds.loadSound(soundPath);

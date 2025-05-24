@@ -1,7 +1,6 @@
 package Game.Panels;
 
 import Game.Enemys.WaveManager;
-import Game.Objects.Ability;
 import Game.Objects.Bullet;
 import Game.Enemys.Enemy;
 import Game.Objects.Player;
@@ -50,7 +49,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         setFocusable(true);
         addKeyListener(this);
         shopManager =new ShopManager(player);
-        waveManager= new WaveManager(this);
+        waveManager= new WaveManager();
 
         //listew für bullets initaliesieren
         bullets = new ArrayList<>();

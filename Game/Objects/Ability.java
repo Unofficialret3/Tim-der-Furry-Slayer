@@ -6,6 +6,7 @@ import Game.Sound.SoundPlayer;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 public class Ability extends Weapon {
@@ -31,7 +32,7 @@ public class Ability extends Weapon {
 
             if(isReady()){
 
-                Bullet bullet = new Bullet(x+xBulletOffset, y,bulletWidth, bulletHeight, bulletTexturePath, bulletHealth, weaponType);
+                Bullet bullet = new Bullet(x+xBulletOffset, y,bulletWidth, bulletHeight, bulletHealth, weaponType, bulletTexture);
                 GamePanel.bullets.add(bullet);
                 try {
                     sounds.loadSound(soundPath);

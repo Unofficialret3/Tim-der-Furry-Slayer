@@ -2,11 +2,14 @@ package Game.Enemys;
 
 import Game.Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Random;
 
 public abstract class EnemyFormation {
-
 
     //spawn patterns
     private static final int[][] spawnPattern1 = {
@@ -70,7 +73,7 @@ public abstract class EnemyFormation {
 
 
     //Spawn Logic
-    protected static void spawnEnemies(ArrayList<Enemy> e ,int waveCount) {
+    protected static void spawnEnemies(ArrayList<Enemy> e ,int waveCount, BufferedImage texture1, BufferedImage texture2) {
 
         //spawnpattern choosing
         Random rand = new Random();
@@ -131,28 +134,41 @@ public abstract class EnemyFormation {
                 int anzahlTypen= 2;
                 int type = (int)(Math.random() * anzahlTypen) + 1;
 
-
-                if(pattern[i][j] == 1){
-                    if(i==mid){
-                        Enemy enemy = new Enemy(Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeX/2-12, Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeY-950 +j *100,type,waveCount);
-                        e.add(enemy);
-                    }
-                    else if(i<mid){
-
-                        Enemy enemy = new Enemy((Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeX/2-12)-((1+i)*100), Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeY-950+j*50,type,waveCount);
-                        e.add(enemy);
-                    }
-                    else if(i>mid){
-                        Enemy enemy = new Enemy((Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeX/2-12)+((i-1)*100), Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeY-950+j*50,type,waveCount);
-                        e.add(enemy);
-                    }
-                    else{
-                        System.out.println("heyho");
-                    }
+                switch(type){
+                    case 1:
+                        spawnPattern(e, waveCount, texture1, pattern, mid, i, j, type);
+                        break;
+                    case 2:
+                        spawnPattern(e, waveCount, texture2, pattern, mid, i, j, type);
+                        break;
                 }
+
+
+
             }
         }
 
 
+    }
+
+    private static void spawnPattern(ArrayList<Enemy> e, int waveCount, BufferedImage texture, int[][] pattern, int mid, int i, int j, int type) {
+        if(pattern[i][j] == 1){
+            if(i==mid){
+                Enemy enemy = new Enemy(Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeX/2-12, Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeY-950 +j *100,type,waveCount, texture);
+                e.add(enemy);
+            }
+            else if(i<mid){
+
+                Enemy enemy = new Enemy((Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeX/2-12)-((1+i)*100), Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeY-950+j*50,type,waveCount, texture);
+                e.add(enemy);
+            }
+            else if(i>mid){
+                Enemy enemy = new Enemy((Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeX/2-12)+((i-1)*100), Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeY-950+j*50,type,waveCount, texture);
+                e.add(enemy);
+            }
+            else{
+                System.out.println("heyho");
+            }
+        }
     }
 }

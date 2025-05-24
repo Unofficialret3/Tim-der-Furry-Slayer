@@ -18,27 +18,18 @@ public class Enemy {
     private final int type ;
     private final int speed ;
     private  int hp;
-
+    BufferedImage texture;
     long oldMillis= 0;
 
-    private BufferedImage image;
-    public Enemy(int startX, int startY, int type, int waveCount) {
+
+    public Enemy(int startX, int startY, int type, int waveCount, BufferedImage texture) {
         this.x = startX;
         this.y = startY;
         //später brauchbar
         this.type=type;
         this.speed= this.getSpeed(waveCount);
         this.hp = this.getHp(waveCount);
-        try {
-            if(type == 1){
-                image = ImageIO.read(Objects.requireNonNull(getClass().getResource("/textures/Enemy.png")));
-            } else if (type == 2){
-                image = ImageIO.read(Objects.requireNonNull(getClass().getResource("/textures/Enemy2.png")));
-            }
-        } catch (IOException | IllegalArgumentException e) {
-            System.err.println("Konnte Bild nicht laden: " + e.getMessage());
-            image = null;
-        }
+        this.texture = texture;
     }
 
 
@@ -90,8 +81,8 @@ public class Enemy {
 
     //enemy  malen
     public void draw(Graphics g) {
-        if (image != null) {
-            g.drawImage(image, x, y, width, height, null);
+        if (texture != null) {
+            g.drawImage(texture, x, y, width, height, null);
         } else {
             g.setColor(Color.PINK);
             g.fillRect(x, y, width, height);
