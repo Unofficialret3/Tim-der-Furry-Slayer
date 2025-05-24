@@ -24,7 +24,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
     private Player player1;
     //liste für die schüsse
-    public static ArrayList<Bullet> bullets;
+    public  ArrayList<Bullet> bullets;
     protected ArrayList<Enemy> enemies;
 
     private boolean isLeftPressed = false;
@@ -134,11 +134,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
             // Schießen 
             if (isSpacePressed) {
-                player1.shootMainWeapon();
+                player1.shootMainWeapon(this);
             }
 
             if(isQPressed){
-                player1.shootSpecialQWeapon();
+                player1.shootSpecialQWeapon(this);
             }
 
             // schüsse updaten

@@ -27,13 +27,13 @@ public class Ability extends Weapon {
         this.loadBarAnimation = new AnimationManager(75,20,5,(int) Math.round(cooldown/5)+50,abilitieLoadBar,idleTexture);
     }
         @Override
-        public void shootWeapon(int x, int y, SoundPlayer sounds) {
+        public void shootWeapon(int x, int y, SoundPlayer sounds, GamePanel gamePanel) {
 
 
             if(isReady()){
 
                 Bullet bullet = new Bullet(x+xBulletOffset, y,bulletWidth, bulletHeight, bulletHealth, weaponType, bulletTexture);
-                GamePanel.bullets.add(bullet);
+                gamePanel.bullets.add(bullet);
                 try {
                     sounds.loadSound(soundPath);
                 } catch (IOException | UnsupportedAudioFileException | LineUnavailableException e) {

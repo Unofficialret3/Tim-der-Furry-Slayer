@@ -50,6 +50,7 @@ public class Weapon {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
     }
     //copy von waffen
     public Weapon(Weapon original) {
@@ -68,12 +69,12 @@ public class Weapon {
         );
     }
 
-    public void shootWeapon(int x, int y, SoundPlayer sounds) {
+    public void shootWeapon(int x, int y, SoundPlayer sounds,GamePanel gamePanel) {
 
         if(System.currentTimeMillis()>=timeOld + 1000/fireRate ){
 
             Bullet bullet = new Bullet(x+xBulletOffset, y,bulletWidth, bulletHeight, bulletHealth, weaponType, bulletTexture);
-            GamePanel.bullets.add(bullet);
+            gamePanel.bullets.add(bullet);
             try {
                 sounds.loadSound(soundPath);
             } catch (IOException | UnsupportedAudioFileException | LineUnavailableException e) {

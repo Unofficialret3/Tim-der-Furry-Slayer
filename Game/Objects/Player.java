@@ -1,5 +1,6 @@
 package Game.Objects;//imports
 import Game.Animation.AnimationManager;
+import Game.Panels.GamePanel;
 import Game.Sound.SoundPlayer;
 import Game.Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20;
 
@@ -24,6 +25,7 @@ public class Player {
     String mainWeaponIdleTexturePath = "/textures/weapons/gun_un_fired.png";
     Ability specialQAbilitie;
 
+
     String[] mainWeaponTexturePaths = new String[] {"/textures/weapons/gun_fired_1.png", "/textures/weapons/gun_fired_2.png", "/textures/weapons/gun_fired_3.png"};
     String[] specialQWeaponTexturePaths = new String[] {"/textures/weapons/Slingshot.png"};
     String getSpecialQAbilityUI = "/textures/Abilities/SpecialQWeaponAbility.png";
@@ -43,6 +45,7 @@ public class Player {
          mainWeapon = new Weapon(70,  85,0, 10, 10, 1, 1, 4,"ressources/sounds/throw.wav", "/textures/stonePebble.png", new AnimationManager(50, 100, 3, 10, mainWeaponTexturePaths, mainWeaponIdleTexturePath));
          // Startanimation beim Spielstart
 
+
         specialQAbilitie = new Ability(200,  0,1, 200, 200, 10, 10,0.5,"ressources/sounds/throw.wav", "/textures/StonePebble.png", new AnimationManager(200, 200, 1, 1, specialQWeaponTexturePaths, specialQWeaponTexturePaths[0]),getSpecialQAbilitieLoadBarTexturePaths);
 
     }
@@ -55,11 +58,11 @@ public class Player {
         x += speed;
     }
 
-    public void shootMainWeapon() {
-        mainWeapon.shootWeapon(x, y, player);
+    public void shootMainWeapon(GamePanel gamePanel) {
+        mainWeapon.shootWeapon(x, y, player,gamePanel);
     }
 
-    public void shootSpecialQWeapon(){specialQAbilitie.shootWeapon(x, y, player);}
+    public void shootSpecialQWeapon(GamePanel gamePanel){specialQAbilitie.shootWeapon(x, y, player,gamePanel);}
 
     public void draw(Graphics g) {
         if (texture != null) {
@@ -118,4 +121,5 @@ public class Player {
     }
 
     public Ability getSpecialQAbilitie() {return specialQAbilitie;}
+    
 }
