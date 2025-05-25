@@ -38,7 +38,7 @@ public class WaveManager {
 
     }
 
-    public static int getWaveCount() {
+    public  int getWaveCount() {
         return waveCount;
     }
 

@@ -6,13 +6,19 @@ public class WeaponItem {
     final String name;
     final int price;
     final Weapon weapon;
-    private int lvl = 0;
+    private int damageLvl = 0;
+    private int firerateLvl = 0;
+    private int bulletHealthLvl = 0;
+    private double growthfactor;
 
-    public WeaponItem(String name, int price, int level, Weapon weapon) {
+    public WeaponItem(String name, int price, int damageLvl,int firerateLvl,int bulletHealthLvl,double growthfactor, Weapon weapon) {
         this.name = name;
         this.price = price;
         this.weapon = weapon;
-        this.lvl=level ;
+        this.damageLvl=damageLvl;
+        this.bulletHealthLvl=bulletHealthLvl;
+        this.firerateLvl=firerateLvl;
+        this.growthfactor=growthfactor;
     }
 
     public String getName() {
@@ -27,11 +33,25 @@ public class WeaponItem {
         return weapon;
     }
 
-    public int getLvl() {
-        return lvl;
+    public int getFirerateLvl() {
+        return firerateLvl;
+    }
+    public int getDamageLvl() {
+        return damageLvl;
+    }
+    public int getBulletHealthLvl() {
+        return bulletHealthLvl;
     }
 
-    public void setLvl(int lvl) {
-        this.lvl = lvl;
+    public double getGrowthfactor(){return growthfactor;}
+
+    public void setFirerateLvl(int level) {
+        this.firerateLvl = level;
+    }
+    public void setDamageLvl(int level) {
+        this.damageLvl = level;
+    }
+    public void setBulletHealthLvl(int level) {
+        this.bulletHealthLvl = level;
     }
 }

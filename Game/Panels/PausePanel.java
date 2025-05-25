@@ -45,7 +45,7 @@ public class PausePanel extends JPanel {
         });
         ShopButton.setOnClick(() -> {
             System.out.println("Shop pop...");
-            Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.ShopPanelActivate(new ShopPanel(gamePanel.shopManager,this));
+            Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.ShopPanelActivate(new ShopPanel(gamePanel.shopManager,gamePanel.getPlayer(),this));
 
         });
         add(BackButton);

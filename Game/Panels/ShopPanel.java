@@ -1,5 +1,6 @@
 package Game.Panels;
 
+import Game.Objects.Player;
 import Game.Shop.ShopManager;
 import Game.Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20;
 
@@ -8,12 +9,16 @@ import java.awt.*;
 
 public class ShopPanel extends JPanel {
     private final Image background;
+    private Player player;
 
-    private final CustomButton UpgradeMainWeaponButton;
+    private final CustomButton UpgradeMainWeaponButtonFireRate;
+    private final CustomButton UpgradeMainWeaponButtonBulletHealth;
+    private final CustomButton UpgradeMainWeaponButtonDamage;
+
     private final CustomButton BackButton;
 
-    public ShopPanel(ShopManager shopManager,PausePanel pausePanel){
-
+    public ShopPanel(ShopManager shopManager, Player player , PausePanel pausePanel){
+        this.player=player;
         this.setFocusable(true);
 
         setLayout(null);
@@ -26,13 +31,29 @@ public class ShopPanel extends JPanel {
 
 
         //upgrade button main
-        if(shopManager.items[0].getLvl()<=8) {
-            UpgradeMainWeaponButton = new CustomButton("Upgrade Main weapon for :" + shopManager.items[0].getPrice());
+        if(shopManager.items[0].getFirerateLvl()<=8) {
+            UpgradeMainWeaponButtonFireRate = new CustomButton("Upgrade Mainweapon Firerate:" + shopManager.items[0].getPrice());
         }
         else {
-            UpgradeMainWeaponButton = new CustomButton("Max LEVEL");
+            UpgradeMainWeaponButtonFireRate = new CustomButton("Max LEVEL");
         }
-        UpgradeMainWeaponButton.setBounds(centerX-450, Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeY- (Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeY/2+150), btnWidth, btnHeight);
+        if(shopManager.items[1].getDamageLvl()<=5) {
+            UpgradeMainWeaponButtonDamage = new CustomButton("Upgrade Mainweapon Damage: " + shopManager.items[1].getPrice());
+        }
+        else {
+            UpgradeMainWeaponButtonDamage = new CustomButton("Max LEVEL");
+        }
+        if(shopManager.items[2].getBulletHealthLvl()<=5) {
+            UpgradeMainWeaponButtonBulletHealth = new CustomButton("Upgrade Mainweapon BulletHealth:" + shopManager.items[2].getPrice());
+        }
+        else {
+            UpgradeMainWeaponButtonBulletHealth = new CustomButton("Max LEVEL");
+        }
+
+
+        UpgradeMainWeaponButtonFireRate.setBounds(centerX, Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeY- (Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeY/2+150), btnWidth, btnHeight);
+        UpgradeMainWeaponButtonDamage.setBounds(centerX-(btnWidth+10), Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeY- (Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeY/2+150), btnWidth, btnHeight);
+        UpgradeMainWeaponButtonBulletHealth.setBounds(centerX+(btnWidth+10), Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeY- (Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeY/2+150), btnWidth, btnHeight);
 
         BackButton = new CustomButton("BACK");
         BackButton.setBounds(centerX, Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeY- (Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeY/4), btnWidth, btnHeight-150);
@@ -42,22 +63,58 @@ public class ShopPanel extends JPanel {
         BackButton.setOnClick(() -> {
             System.out.println("firerate: "+ pausePanel.gamePanel.getPlayer().getMainWeapon().getFireRate());
             Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.PausePanelActivate(pausePanel);
-
+            repaint();
         });
-        UpgradeMainWeaponButton.setOnClick(() -> {
 
-            if(shopManager.items[0].getLvl()<=8) {
+        UpgradeMainWeaponButtonFireRate.setOnClick(() -> {
+
+            if(shopManager.items[0].getFirerateLvl()<=8) {
                 System.out.println("Krasse waffe .xml...");
                 shopManager.setUpgradingMainWeapon(true);
                 shopManager.buyItem(0, pausePanel.gamePanel.getPlayer());
-                UpgradeMainWeaponButton.setLabel("Upgrade Main weapon for: " + shopManager.items[0].getPrice());
+                UpgradeMainWeaponButtonFireRate.setLabel("Upgrade Main weapon for: " + shopManager.items[0].getPrice());
             }
             else{
-                UpgradeMainWeaponButton.setLabel("Max LEVEL");
+                UpgradeMainWeaponButtonFireRate.setLabel("Max LEVEL");
             }
+            repaint();
         });
+
+        UpgradeMainWeaponButtonDamage.setOnClick(() -> {
+
+            if(shopManager.items[1].getDamageLvl()<=5) {
+                System.out.println("Krasse waffe .xml...");
+                shopManager.setUpgradingMainWeapon(true);
+                shopManager.buyItem(1, pausePanel.gamePanel.getPlayer());
+                UpgradeMainWeaponButtonDamage.setLabel("Upgrade Main weapon for: " + shopManager.items[1].getPrice());
+            }
+            else{
+                UpgradeMainWeaponButtonDamage.setLabel("Max LEVEL");
+            }
+            repaint();
+        });
+        UpgradeMainWeaponButtonBulletHealth.setOnClick(() -> {
+
+            if(shopManager.items[2].getBulletHealthLvl()<=5) {
+                System.out.println("Krasse waffe .xml...");
+                shopManager.setUpgradingMainWeapon(true);
+                shopManager.buyItem(2, pausePanel.gamePanel.getPlayer());
+                UpgradeMainWeaponButtonBulletHealth.setLabel("Upgrade Main weapon for: " + shopManager.items[2].getPrice());
+            }
+            else{
+                UpgradeMainWeaponButtonBulletHealth.setLabel("Max LEVEL");
+            }
+            repaint();
+        });
+
+
+
+
+
         add(BackButton);
-        add(UpgradeMainWeaponButton);
+        add(UpgradeMainWeaponButtonFireRate);
+        add(UpgradeMainWeaponButtonDamage);
+        add(UpgradeMainWeaponButtonBulletHealth);
 
     }
 
@@ -72,5 +129,14 @@ public class ShopPanel extends JPanel {
             g.fillRect(0, 0, getWidth(), getHeight());
         }
 
+        drawMoney(g);
+
+
+    }
+
+    private void drawMoney(Graphics g) {
+        g.setColor(Color.WHITE); //
+        g.setFont(new Font("SansSerif", Font.BOLD, 20)); // Schriftart
+        g.drawString("Money: " + player.getMoney(), (Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeX/2)-30, 20); // rechts oben
     }
 }

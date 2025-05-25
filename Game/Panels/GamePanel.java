@@ -94,6 +94,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         enemy.draw(g);
         drawScore(g);
         drawMoney(g);
+        drawWaveCount(g);
         }
         
         // TODO:  und Objekte zeichnen
@@ -248,6 +249,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         }
         */
         repaint();
+        System.out.println("weapon stats---Damage: "+ player1.getMainWeapon().getDamage() +" Firerate: "+player1.getMainWeapon().getFireRate()+" BulletHealth: "+player1.getMainWeapon().getBulletHealth());
     }
 
     //methodend
@@ -271,6 +273,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         g.setColor(Color.WHITE); //
         g.setFont(new Font("SansSerif", Font.BOLD, 20)); // Schriftart
         g.drawString("Money: " + player1.getMoney(), Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeX-150, 20); // rechts oben
+    }
+    private  void drawWaveCount(Graphics g){
+        g.setColor(Color.WHITE);
+        g.setFont(new Font("SansSerif", Font.BOLD, 20)); // Schriftart
+        g.drawString("Wave: " + waveManager.getWaveCount(), (Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeX/2) -40, 20); // mitte oben
     }
 
     // Tasteneingaben
