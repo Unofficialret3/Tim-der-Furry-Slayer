@@ -23,8 +23,8 @@ public class Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20 {
         frame.setResizable(false);
         frame.setTitle("TIM DER FURRY SLAYER very HD 69FPS!!! EXTREME 2 OPEN ALPHA V 4.20");
         //homescreen
-      // HomeScreenActivate();
-       GamePanelActivate();
+      HomeScreenActivate();
+       //GamePanelActivate();
     }
 
     protected static void HomeScreenActivate(){

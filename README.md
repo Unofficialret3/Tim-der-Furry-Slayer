@@ -1,10 +1,6 @@
-Jo sehr starkes spiel
+Jo sehr starkes spiel , sehr gut umgesetzt und noch bessere effezients.
 
-
-ToDO :
-   
--  - Gegners
-   - WICHTIG Animation für Gegner schaden nehmend
-    - gegner schießen, kollsions logik für spieler -> sterben game over
-    - Gegner bewegen
+Bekannte probleme:
+   - idk gegenrs haben keine animation beim Damage nehmen
+   - idk spiel und sag es mir
 

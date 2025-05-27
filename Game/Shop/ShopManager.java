@@ -38,15 +38,15 @@ public class ShopManager {
     private void possibleUpgradeMain(Player player, int itemNumber){
         Weapon oldWeapon = player.getMainWeapon();
         Weapon newWeapon = new Weapon(oldWeapon);
-
+        int oldLvl=0;
         int newLvl = 0;
         int startPrice = 0;
         double growthFactor = items[itemNumber].getGrowthfactor();
         // levelwählen
         switch (itemNumber) {
-            case 0: newLvl = items[0].getFirerateLvl()+1; break; // FireRate
-            case 1: newLvl = items[1].getFirerateLvl()+1; break;// Damage
-            case 2: newLvl = items[2].getFirerateLvl()+1; break; // BulletHealth
+            case 0: newLvl = items[0].getFirerateLvl()+1; oldLvl=items[0].getFirerateLvl(); break; // FireRate
+            case 1: newLvl = items[1].getDamageLvl()+1; oldLvl=items[1].getFirerateLvl();break;// Damage
+            case 2: newLvl = items[2].getBulletHealthLvl()+1; oldLvl=items[2].getFirerateLvl();break; // BulletHealth
         }
 
 
@@ -56,7 +56,7 @@ public class ShopManager {
             case 1: startPrice = 20; break; // Damage
             case 2: startPrice = 25; break; // BulletHealth
         }
-
+        int oldPrice = calculatePrice(startPrice,growthFactor,oldLvl);
         int newPrice = calculatePrice(startPrice, growthFactor, newLvl);
 
         switch (itemNumber){
@@ -71,17 +71,37 @@ public class ShopManager {
                 break;
         }
         WeaponItem upgradedMainWeapon = null;
+        WeaponItem copyUpgradedMainWeapon = null;
         switch (itemNumber) {
 
-            case 0:upgradedMainWeapon = new WeaponItem(items[itemNumber].getName(), newPrice,items[0].getDamageLvl(), newLvl,items[0].getBulletHealthLvl(), growthFactor, newWeapon);break; // FireRate
-            case 1: upgradedMainWeapon = new WeaponItem(items[itemNumber].getName(), newPrice, newLvl,items[1].getFirerateLvl(),items[1].getBulletHealthLvl(), growthFactor, newWeapon);break;// Damage
-            case 2:upgradedMainWeapon = new WeaponItem(items[itemNumber].getName(), newPrice,items[2].getDamageLvl(),items[2].getFirerateLvl(), newLvl, growthFactor, newWeapon); break; // BulletHealth
+            case 0:
+                upgradedMainWeapon = new WeaponItem(items[itemNumber].getName(), newPrice,items[0].getDamageLvl(), newLvl,items[0].getBulletHealthLvl(), growthFactor, newWeapon);
+                 copyUpgradedMainWeapon =new WeaponItem(items[itemNumber].getName(),oldPrice, oldLvl,items[1].getFirerateLvl(),items[1].getBulletHealthLvl(),growthFactor,  newWeapon);
+                items[0]= upgradedMainWeapon;
+                items[1]= copyUpgradedMainWeapon;
+                items[2]= copyUpgradedMainWeapon;
+                break; // FireRate
+            case 1:
+                upgradedMainWeapon = new WeaponItem(items[itemNumber].getName(), newPrice, newLvl,items[1].getFirerateLvl(),items[1].getBulletHealthLvl(),growthFactor,  newWeapon);
+                copyUpgradedMainWeapon =new WeaponItem(items[itemNumber].getName(),oldPrice, oldLvl,items[1].getFirerateLvl(),items[1].getBulletHealthLvl(),growthFactor,  newWeapon);
+                items[0]= copyUpgradedMainWeapon;
+                items[1]= upgradedMainWeapon;
+                items[2]= copyUpgradedMainWeapon;
+
+                break;// Damage
+            case 2:
+                upgradedMainWeapon = new WeaponItem(items[itemNumber].getName(), newPrice,items[2].getDamageLvl(),items[2].getFirerateLvl(), newLvl,growthFactor, newWeapon);
+                copyUpgradedMainWeapon =new WeaponItem(items[itemNumber].getName(),oldPrice, oldLvl,items[1].getFirerateLvl(),items[1].getBulletHealthLvl(),growthFactor,  newWeapon);
+                items[0]= copyUpgradedMainWeapon;
+                items[1]= copyUpgradedMainWeapon;
+                items[2]= upgradedMainWeapon;
+
+
+                break; // BulletHealth
         }
 
 
-        for(int i = 0;i<=items.length-1;i++){
-            items[i] = upgradedMainWeapon;
-        }
+
 
     }
 

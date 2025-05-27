@@ -12,7 +12,7 @@ public class HomePanel extends JPanel {
     private final Image background;
 
     private final CustomButton startButton;
-    private final CustomButton optionsButton;
+    //private final CustomButton optionsButton;
 
      public HomePanel() {
         setFocusable(true);
@@ -21,7 +21,7 @@ public class HomePanel extends JPanel {
 
         // Button initialisieren
         startButton = new CustomButton("Spiel starten");
-        optionsButton = new CustomButton("Optionen");
+        //optionsButton = new CustomButton("Optionen");
         background = new ImageIcon("ressources/textures/TitleScreen.png").getImage();
 
         // Größe setzen und zentrieren
@@ -30,7 +30,7 @@ public class HomePanel extends JPanel {
         int centerX = (Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeX - btnWidth) / 2;
 
         startButton.setBounds(centerX, Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeY- Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeY/4, btnWidth, btnHeight);
-        optionsButton.setBounds(centerX, Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeY- Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeY/4 + 80, btnWidth, btnHeight);
+       // optionsButton.setBounds(centerX, Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeY- Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.sizeY/4 + 80, btnWidth, btnHeight);
 
         // Aktionen bei Klick
         startButton.setOnClick(() -> {
@@ -39,14 +39,14 @@ public class HomePanel extends JPanel {
             Tim_der_Furry_Slayer_VERYHD_69FPS_EXTREME_2_OPENALPHA_V4_20.GamePanelActivate();
         });
 
-        optionsButton.setOnClick(() -> {
+       /* optionsButton.setOnClick(() -> {
             System.out.println("Optionen geöffnet...");
             // TODO: Optionsmenü anzeigen
         });
-
+        */
         // Buttons hinzufügen
         add(startButton);
-        add(optionsButton);
+       // add(optionsButton);
     }
 
 

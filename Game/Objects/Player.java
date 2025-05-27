@@ -14,7 +14,7 @@ import java.util.Objects;
 public class Player {
     public SoundPlayer player = new SoundPlayer();
 
-    public int money = 10000;
+    public int money = 0;
 
     protected int x, y, width = 100, height = 100;
     protected int speed = 15;
